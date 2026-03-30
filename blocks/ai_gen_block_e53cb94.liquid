@@ -1,0 +1,546 @@
+{% doc %}
+  @prompt
+    Create a Product Page Delivery Timeline Section that appears under the Buy Now button and shows the order journey and delivery estimate.
+    
+    Section Name
+    
+    delivery-timeline.liquid
+    
+    Placement
+    
+    Product page
+    
+    Display below the Buy Buttons
+    
+    Layout Structure
+    
+    Top Timeline Bar (3 Steps)
+    
+    Step 1: Order Placed
+    
+    Step 2: Order Dispatched / In-Transit
+    
+    Step 3: Order Delivered
+    
+    Each step should include:
+    
+    Circular icon
+    
+    Date
+    
+    Status text
+    
+    A horizontal progress line connecting the steps
+    
+    Timeline Steps
+    
+    Step 1
+    
+    Icon: Shopping bag
+    
+    Title: Order Placed
+    
+    Date: Dynamic (current date)
+    
+    Step 2
+    
+    Icon: Truck
+    
+    Title: Order Dispatched
+    
+    Date: Current date + 2–3 days
+    
+    Step 3
+    
+    Icon: Home / Delivery
+    
+    Title: Order Delivered
+    
+    Date: Current date + 5–7 days
+    
+    Shipping Options (Below Timeline)
+    
+    Add two shipping methods:
+    
+    1. Standard Shipping
+    
+    Icon: Truck
+    
+    Label: Standard Shipping (Free)
+    
+    Delivery estimate: 5–7 business days
+    
+    2. Express Shipping
+    
+    Icon: Fast delivery / plane
+    
+    Label: Express Shipping
+    
+    Delivery estimate: 2–3 business days
+    
+    Features
+    
+    Fully responsive (mobile friendly)
+    
+    Icons from Shopify theme icons or SVG
+    
+    Dates calculated using Liquid + JavaScript
+    
+    Styling consistent with theme typography
+    
+    Section must be customizable in theme editor
+    
+    Customizer Settings
+    
+    Allow merchant to change:
+    
+    Standard shipping days
+    
+    Express shipping days
+    
+    Free shipping text
+    
+    Icons
+    
+    Colors
+    
+    UI Style
+    
+    Clean minimal design
+    
+    Grey progress line
+    
+    Green highlight for active step
+    
+    Circular icons
+    
+    Horizontal timeline, remove express and standard delivery this and i need black icon not green 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-delivery-timeline-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.section_padding }}px 0;
+  }
+
+  .ai-delivery-timeline-container-{{ ai_gen_id }} {
+    width: 100%;
+  }
+
+  .ai-delivery-timeline-steps-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .ai-delivery-timeline-progress-line-{{ ai_gen_id }} {
+    position: absolute;
+    top: {{ block.settings.icon_size | divided_by: 2 }}px;
+    left: {{ block.settings.icon_size | divided_by: 2 }}px;
+    right: {{ block.settings.icon_size | divided_by: 2 }}px;
+    height: {{ block.settings.progress_line_width }}px;
+    background-color: {{ block.settings.progress_line_color }};
+    z-index: 0;
+  }
+
+  .ai-delivery-timeline-step-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ai-delivery-timeline-icon-wrapper-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    border-radius: 50%;
+    background-color: {{ block.settings.icon_background_color }};
+    border: {{ block.settings.icon_border_width }}px solid {{ block.settings.icon_border_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .ai-delivery-timeline-step-{{ ai_gen_id }}.active .ai-delivery-timeline-icon-wrapper-{{ ai_gen_id }} {
+    background-color: {{ block.settings.active_icon_background_color }};
+    border-color: {{ block.settings.active_icon_border_color }};
+  }
+
+  .ai-delivery-timeline-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size | times: 0.5 }}px;
+    height: {{ block.settings.icon_size | times: 0.5 }}px;
+    color: {{ block.settings.icon_color }};
+  }
+
+  .ai-delivery-timeline-step-{{ ai_gen_id }}.active .ai-delivery-timeline-icon-{{ ai_gen_id }} {
+    color: {{ block.settings.active_icon_color }};
+  }
+
+  .ai-delivery-timeline-step-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.step_title_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.text_color }};
+    margin-bottom: 4px;
+    text-align: center;
+  }
+
+  .ai-delivery-timeline-step-date-{{ ai_gen_id }} {
+    font-size: {{ block.settings.step_date_size }}px;
+    color: {{ block.settings.date_color }};
+    text-align: center;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-delivery-timeline-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .ai-delivery-timeline-step-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.step_title_size | times: 0.85 }}px;
+    }
+
+    .ai-delivery-timeline-step-date-{{ ai_gen_id }} {
+      font-size: {{ block.settings.step_date_size | times: 0.85 }}px;
+    }
+
+    .ai-delivery-timeline-icon-wrapper-{{ ai_gen_id }} {
+      width: {{ block.settings.icon_size | times: 0.8 }}px;
+      height: {{ block.settings.icon_size | times: 0.8 }}px;
+    }
+
+    .ai-delivery-timeline-icon-{{ ai_gen_id }} {
+      width: {{ block.settings.icon_size | times: 0.4 }}px;
+      height: {{ block.settings.icon_size | times: 0.4 }}px;
+    }
+
+    .ai-delivery-timeline-progress-line-{{ ai_gen_id }} {
+      top: {{ block.settings.icon_size | times: 0.8 | divided_by: 2 }}px;
+      left: {{ block.settings.icon_size | times: 0.8 | divided_by: 2 }}px;
+      right: {{ block.settings.icon_size | times: 0.8 | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+<delivery-timeline-{{ ai_gen_id }}
+  class="ai-delivery-timeline-{{ ai_gen_id }}"
+  data-dispatch-min="{{ block.settings.dispatch_days_min }}"
+  data-dispatch-max="{{ block.settings.dispatch_days_max }}"
+  data-delivery-min="{{ block.settings.delivery_days_min }}"
+  data-delivery-max="{{ block.settings.delivery_days_max }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-delivery-timeline-container-{{ ai_gen_id }}">
+    <div class="ai-delivery-timeline-steps-{{ ai_gen_id }}">
+      <div class="ai-delivery-timeline-progress-line-{{ ai_gen_id }}"></div>
+
+      <div class="ai-delivery-timeline-step-{{ ai_gen_id }} active" data-step="placed">
+        <div class="ai-delivery-timeline-icon-wrapper-{{ ai_gen_id }}">
+          <svg class="ai-delivery-timeline-icon-{{ ai_gen_id }}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+          </svg>
+        </div>
+        <div class="ai-delivery-timeline-step-title-{{ ai_gen_id }}">{{ block.settings.step_1_title }}</div>
+        <div class="ai-delivery-timeline-step-date-{{ ai_gen_id }}" data-date="placed"></div>
+      </div>
+
+      <div class="ai-delivery-timeline-step-{{ ai_gen_id }}" data-step="dispatched">
+        <div class="ai-delivery-timeline-icon-wrapper-{{ ai_gen_id }}">
+          <svg class="ai-delivery-timeline-icon-{{ ai_gen_id }}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path>
+          </svg>
+        </div>
+        <div class="ai-delivery-timeline-step-title-{{ ai_gen_id }}">{{ block.settings.step_2_title }}</div>
+        <div class="ai-delivery-timeline-step-date-{{ ai_gen_id }}" data-date="dispatched"></div>
+      </div>
+
+      <div class="ai-delivery-timeline-step-{{ ai_gen_id }}" data-step="delivered">
+        <div class="ai-delivery-timeline-icon-wrapper-{{ ai_gen_id }}">
+          <svg class="ai-delivery-timeline-icon-{{ ai_gen_id }}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+        </div>
+        <div class="ai-delivery-timeline-step-title-{{ ai_gen_id }}">{{ block.settings.step_3_title }}</div>
+        <div class="ai-delivery-timeline-step-date-{{ ai_gen_id }}" data-date="delivered"></div>
+      </div>
+    </div>
+  </div>
+</delivery-timeline-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class DeliveryTimeline{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.dispatchMin = parseInt(this.dataset.dispatchMin);
+        this.dispatchMax = parseInt(this.dataset.dispatchMax);
+        this.deliveryMin = parseInt(this.dataset.deliveryMin);
+        this.deliveryMax = parseInt(this.dataset.deliveryMax);
+      }
+
+      connectedCallback() {
+        this.updateDates();
+      }
+
+      updateDates() {
+        const today = new Date();
+        const placedDate = this.formatDate(today);
+        
+        const dispatchDate = new Date(today);
+        dispatchDate.setDate(dispatchDate.getDate() + this.dispatchMin);
+        const dispatchDateMax = new Date(today);
+        dispatchDateMax.setDate(dispatchDateMax.getDate() + this.dispatchMax);
+        
+        const deliveredDate = new Date(today);
+        deliveredDate.setDate(deliveredDate.getDate() + this.deliveryMin);
+        const deliveredDateMax = new Date(today);
+        deliveredDateMax.setDate(deliveredDateMax.getDate() + this.deliveryMax);
+        
+        const placedElement = this.querySelector('[data-date="placed"]');
+        const dispatchedElement = this.querySelector('[data-date="dispatched"]');
+        const deliveredElement = this.querySelector('[data-date="delivered"]');
+        
+        if (placedElement) {
+          placedElement.textContent = placedDate;
+        }
+        
+        if (dispatchedElement) {
+          if (this.dispatchMin === this.dispatchMax) {
+            dispatchedElement.textContent = this.formatDate(dispatchDate);
+          } else {
+            dispatchedElement.textContent = this.formatDate(dispatchDate) + ' - ' + this.formatDate(dispatchDateMax);
+          }
+        }
+        
+        if (deliveredElement) {
+          if (this.deliveryMin === this.deliveryMax) {
+            deliveredElement.textContent = this.formatDate(deliveredDate);
+          } else {
+            deliveredElement.textContent = this.formatDate(deliveredDate) + ' - ' + this.formatDate(deliveredDateMax);
+          }
+        }
+      }
+
+      formatDate(date) {
+        const options = { month: 'short', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+      }
+    }
+
+    customElements.define('delivery-timeline-{{ ai_gen_id }}', DeliveryTimeline{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Delivery timeline",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Timeline steps"
+    },
+    {
+      "type": "text",
+      "id": "step_1_title",
+      "label": "Step 1 title",
+      "default": "Order Placed"
+    },
+    {
+      "type": "text",
+      "id": "step_2_title",
+      "label": "Step 2 title",
+      "default": "Order Dispatched"
+    },
+    {
+      "type": "text",
+      "id": "step_3_title",
+      "label": "Step 3 title",
+      "default": "Order Delivered"
+    },
+    {
+      "type": "range",
+      "id": "dispatch_days_min",
+      "label": "Dispatch minimum days",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "dispatch_days_max",
+      "label": "Dispatch maximum days",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "delivery_days_min",
+      "label": "Delivery minimum days",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "delivery_days_max",
+      "label": "Delivery maximum days",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "default": 7
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Timeline style"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "icon_border_width",
+      "label": "Icon border width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "progress_line_width",
+      "label": "Progress line width",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "step_title_size",
+      "label": "Step title size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "step_date_size",
+      "label": "Step date size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#080808"
+    },
+    {
+      "type": "color",
+      "id": "date_color",
+      "label": "Date",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "progress_line_color",
+      "label": "Progress line",
+      "default": "#E6E6E6"
+    },
+    {
+      "type": "color",
+      "id": "icon_background_color",
+      "label": "Icon background",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "icon_border_color",
+      "label": "Icon border",
+      "default": "#E6E6E6"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "active_icon_background_color",
+      "label": "Active icon background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "active_icon_border_color",
+      "label": "Active icon border",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "active_icon_color",
+      "label": "Active icon",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Delivery timeline"
+    }
+  ]
+}
+{% endschema %}

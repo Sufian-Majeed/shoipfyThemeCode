@@ -1,0 +1,406 @@
+{% doc %}
+  @prompt
+    create a section where i can add size chart of my cloth it should be like Size Chat and when i click on it it popup and show suze chart image, i dont need button i need a text only 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-size-chart-container-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+  }
+
+  .ai-size-chart-text-{{ ai_gen_id }} {
+    display: inline-block;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_font_size }}px;
+    cursor: pointer;
+    text-decoration: {{ block.settings.text_decoration }};
+    transition: all 0.3s ease;
+  }
+
+  .ai-size-chart-text-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.text_hover_color }};
+    text-decoration: {{ block.settings.text_hover_decoration }};
+  }
+
+  .ai-size-chart-modal-{{ ai_gen_id }} {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .ai-size-chart-modal-{{ ai_gen_id }}.active {
+    display: flex;
+  }
+
+  .ai-size-chart-modal-content-{{ ai_gen_id }} {
+    position: relative;
+    background-color: {{ block.settings.modal_background }};
+    border-radius: {{ block.settings.modal_border_radius }}px;
+    max-width: {{ block.settings.modal_max_width }}px;
+    width: 100%;
+    max-height: 90vh;
+    overflow: auto;
+    padding: 40px;
+  }
+
+  .ai-size-chart-modal-close-{{ ai_gen_id }} {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: {{ block.settings.modal_text_color }};
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+
+  .ai-size-chart-modal-close-{{ ai_gen_id }}:hover {
+    opacity: 0.7;
+  }
+
+  .ai-size-chart-modal-close-icon-{{ ai_gen_id }} {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ai-size-chart-modal-header-{{ ai_gen_id }} {
+    margin-bottom: 24px;
+  }
+
+  .ai-size-chart-modal-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.modal_title_size }}px;
+    color: {{ block.settings.modal_text_color }};
+    margin: 0;
+  }
+
+  .ai-size-chart-image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+  }
+
+  .ai-size-chart-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .ai-size-chart-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    min-height: 400px;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  .ai-size-chart-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .ai-size-chart-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-size-chart-modal-content-{{ ai_gen_id }} {
+      padding: 24px;
+      max-width: 100%;
+    }
+
+    .ai-size-chart-modal-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.modal_title_size | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<size-chart-{{ ai_gen_id }} class="ai-size-chart-container-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <span
+    class="ai-size-chart-text-{{ ai_gen_id }}"
+    role="button"
+    tabindex="0"
+    aria-label="Open size chart"
+    aria-expanded="false"
+  >
+    {{ block.settings.text_label }}
+  </span>
+
+  <div class="ai-size-chart-modal-{{ ai_gen_id }}" role="dialog" aria-modal="true" aria-labelledby="size-chart-title-{{ ai_gen_id }}">
+    <div class="ai-size-chart-modal-content-{{ ai_gen_id }}">
+      <button
+        class="ai-size-chart-modal-close-{{ ai_gen_id }}"
+        aria-label="Close size chart"
+      >
+        <svg
+          class="ai-size-chart-modal-close-icon-{{ ai_gen_id }}"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="ai-size-chart-modal-header-{{ ai_gen_id }}">
+        <h2 id="size-chart-title-{{ ai_gen_id }}" class="ai-size-chart-modal-title-{{ ai_gen_id }}">
+          {{ block.settings.modal_title }}
+        </h2>
+      </div>
+
+      <div class="ai-size-chart-image-wrapper-{{ ai_gen_id }}">
+        {% if block.settings.size_chart_image %}
+          <img
+            src="{{ block.settings.size_chart_image | image_url: width: 1200 }}"
+            alt="{{ block.settings.size_chart_image.alt | escape }}"
+            loading="lazy"
+            width="{{ block.settings.size_chart_image.width }}"
+            height="{{ block.settings.size_chart_image.height }}"
+            class="ai-size-chart-image-{{ ai_gen_id }}"
+          >
+        {% else %}
+          <div class="ai-size-chart-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+            <div class="ai-size-chart-empty-state-{{ ai_gen_id }}">
+              Next, add your size chart image
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</size-chart-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class SizeChart{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.textLink = this.querySelector('.ai-size-chart-text-{{ ai_gen_id }}');
+        this.modal = this.querySelector('.ai-size-chart-modal-{{ ai_gen_id }}');
+        this.closeButton = this.querySelector('.ai-size-chart-modal-close-{{ ai_gen_id }}');
+
+        this.setupEventListeners();
+      }
+
+      setupEventListeners() {
+        this.textLink.addEventListener('click', () => {
+          this.openModal();
+        });
+
+        this.textLink.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            this.openModal();
+          }
+        });
+
+        this.closeButton.addEventListener('click', () => {
+          this.closeModal();
+        });
+
+        this.modal.addEventListener('click', (event) => {
+          if (event.target === this.modal) {
+            this.closeModal();
+          }
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && this.modal.classList.contains('active')) {
+            this.closeModal();
+          }
+        });
+      }
+
+      openModal() {
+        this.modal.classList.add('active');
+        this.textLink.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      closeModal() {
+        this.modal.classList.remove('active');
+        this.textLink.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    }
+
+    customElements.define('size-chart-{{ ai_gen_id }}', SizeChart{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Size chart",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text link"
+    },
+    {
+      "type": "text",
+      "id": "text_label",
+      "label": "Text",
+      "default": "Size Chart"
+    },
+    {
+      "type": "range",
+      "id": "text_font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_hover_color",
+      "label": "Hover text color",
+      "default": "#333333"
+    },
+    {
+      "type": "select",
+      "id": "text_decoration",
+      "label": "Text decoration",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "underline",
+          "label": "Underline"
+        }
+      ],
+      "default": "underline"
+    },
+    {
+      "type": "select",
+      "id": "text_hover_decoration",
+      "label": "Hover text decoration",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "underline",
+          "label": "Underline"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Modal"
+    },
+    {
+      "type": "text",
+      "id": "modal_title",
+      "label": "Modal title",
+      "default": "Size Chart"
+    },
+    {
+      "type": "range",
+      "id": "modal_title_size",
+      "label": "Title size",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "image_picker",
+      "id": "size_chart_image",
+      "label": "Size chart image"
+    },
+    {
+      "type": "range",
+      "id": "modal_max_width",
+      "label": "Maximum width",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "default": 800
+    },
+    {
+      "type": "color",
+      "id": "modal_background",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "modal_text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "modal_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    }
+  ],
+  "presets": [
+    {
+      "name": "Size chart"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,435 @@
+{% doc %}
+  @prompt
+    create a section that show random number of visitor on this website currently watching the website
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-visitor-counter-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-visitor-counter__content-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: {{ block.settings.text_alignment }};
+    gap: {{ block.settings.gap }}px;
+    flex-wrap: wrap;
+  }
+
+  .ai-visitor-counter__icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    color: {{ block.settings.icon_color }};
+    flex-shrink: 0;
+  }
+
+  .ai-visitor-counter__text-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.4;
+  }
+
+  .ai-visitor-counter__number-{{ ai_gen_id }} {
+    color: {{ block.settings.number_color }};
+    font-weight: {{ block.settings.number_weight }};
+    font-size: {{ block.settings.number_size }}px;
+  }
+
+  .ai-visitor-counter__pulse-{{ ai_gen_id }} {
+    display: inline-block;
+    width: {{ block.settings.pulse_size }}px;
+    height: {{ block.settings.pulse_size }}px;
+    background-color: {{ block.settings.pulse_color }};
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+  }
+
+  {% if block.settings.show_pulse_animation %}
+    .ai-visitor-counter__pulse-{{ ai_gen_id }}::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      background-color: {{ block.settings.pulse_color }};
+      border-radius: 50%;
+      animation: ai-visitor-pulse-{{ ai_gen_id }} 2s ease-out infinite;
+    }
+
+    @keyframes ai-visitor-pulse-{{ ai_gen_id }} {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2);
+      }
+    }
+  {% endif %}
+
+  @media screen and (max-width: 749px) {
+    .ai-visitor-counter-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .ai-visitor-counter__content-{{ ai_gen_id }} {
+      justify-content: center;
+    }
+  }
+{% endstyle %}
+
+<visitor-counter-{{ ai_gen_id }}
+  class="ai-visitor-counter-{{ ai_gen_id }}"
+  data-min="{{ block.settings.min_visitors }}"
+  data-max="{{ block.settings.max_visitors }}"
+  data-update-interval="{{ block.settings.update_interval }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-visitor-counter__content-{{ ai_gen_id }}">
+    {% if block.settings.show_icon %}
+      <svg
+        class="ai-visitor-counter__icon-{{ ai_gen_id }}"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+        <circle cx="9" cy="7" r="4"></circle>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+      </svg>
+    {% endif %}
+
+    <div class="ai-visitor-counter__text-{{ ai_gen_id }}">
+      {% if block.settings.show_pulse %}
+        <span class="ai-visitor-counter__pulse-{{ ai_gen_id }}"></span>
+      {% endif %}
+      <span class="ai-visitor-counter__number-{{ ai_gen_id }}" data-visitor-count>{{ block.settings.min_visitors }}</span>
+      {{ block.settings.text }}
+    </div>
+  </div>
+</visitor-counter-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class VisitorCounter{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.minVisitors = parseInt(this.dataset.min) || 10;
+        this.maxVisitors = parseInt(this.dataset.max) || 100;
+        this.updateInterval = parseInt(this.dataset.updateInterval) * 1000 || 5000;
+        this.currentCount = this.minVisitors;
+        this.countElement = null;
+        this.intervalId = null;
+      }
+
+      connectedCallback() {
+        this.countElement = this.querySelector('[data-visitor-count]');
+        this.initializeCount();
+        this.startUpdating();
+      }
+
+      disconnectedCallback() {
+        if (this.intervalId) {
+          clearInterval(this.intervalId);
+        }
+      }
+
+      initializeCount() {
+        this.currentCount = this.getRandomCount();
+        this.updateDisplay();
+      }
+
+      getRandomCount() {
+        return Math.floor(Math.random() * (this.maxVisitors - this.minVisitors + 1)) + this.minVisitors;
+      }
+
+      updateDisplay() {
+        if (this.countElement) {
+          this.countElement.textContent = this.currentCount;
+        }
+      }
+
+      startUpdating() {
+        this.intervalId = setInterval(() => {
+          const change = Math.random() < 0.5 ? -1 : 1;
+          const newCount = this.currentCount + change;
+
+          if (newCount >= this.minVisitors && newCount <= this.maxVisitors) {
+            this.currentCount = newCount;
+          } else {
+            this.currentCount = this.getRandomCount();
+          }
+
+          this.updateDisplay();
+        }, this.updateInterval);
+      }
+    }
+
+    customElements.define('visitor-counter-{{ ai_gen_id }}', VisitorCounter{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Live visitor counter",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "people are currently viewing this site"
+    },
+    {
+      "type": "range",
+      "id": "min_visitors",
+      "label": "Minimum visitors",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "max_visitors",
+      "label": "Maximum visitors",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "update_interval",
+      "label": "Update interval",
+      "min": 3,
+      "max": 30,
+      "step": 1,
+      "unit": "s",
+      "default": 5,
+      "info": "How often the visitor count changes"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between elements",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show icon",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#080808"
+    },
+    {
+      "type": "header",
+      "content": "Pulse indicator"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pulse",
+      "label": "Show pulse",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pulse_animation",
+      "label": "Animate pulse",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "pulse_size",
+      "label": "Pulse size",
+      "min": 6,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "pulse_color",
+      "label": "Pulse color",
+      "default": "#00ff00"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#080808"
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Number",
+      "default": "#080808"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "label": "Number size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "number_weight",
+      "label": "Number weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Live visitor counter"
+    }
+  ]
+}
+{% endschema %}
