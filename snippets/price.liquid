@@ -95,9 +95,7 @@
       </span>
 
       {% if template.name == 'product' %}
-        <span class="save-price"> Save {{ save_amount }} </span>
-
-        <span class="save-percent"> ({{ save_percent }}% OFF) </span>
+        <span class="save-badge">Save {{ save_amount }} &nbsp;·&nbsp; {{ save_percent }}% OFF</span>
       {% endif %}
 
     {% else %}

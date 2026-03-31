@@ -4988,17 +4988,16 @@ font-size: 18px;
 margin-right:6px;
 }
 
-.save-price{
-color:#e53935;
-font-weight:500;
-margin-right:6px;
-}
-
-.save-percent{
-background:#e53935;
-color:#fff;
-padding:2px 6px;
-border-radius:4px;
-font-size:12px;
+.save-badge{
+  display:inline-flex;
+  align-items:center;
+  background:#e53935;
+  color:#fff;
+  font-weight:600;
+  font-size:13px;
+  padding:4px 10px;
+  border-radius:6px;
+  letter-spacing:0.02em;
+  margin-top:2px;
 }
 
