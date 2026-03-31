@@ -11,10 +11,22 @@
     max-width: 100%;
   }
 
+  .ai-size-chart-row-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: {{ block.settings.text_font_size }}px;
+  }
+
+  .ai-size-chart-prefix-{{ ai_gen_id }} {
+    color: #333333;
+    font-size: {{ block.settings.text_font_size }}px;
+  }
+
   .ai-size-chart-text-{{ ai_gen_id }} {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     color: {{ block.settings.text_color }};
     font-size: {{ block.settings.text_font_size }}px;
     font-weight: 600;
@@ -148,18 +160,21 @@
 {% endstyle %}
 
 <size-chart-{{ ai_gen_id }} class="ai-size-chart-container-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
-  <span
-    class="ai-size-chart-text-{{ ai_gen_id }}"
-    role="button"
-    tabindex="0"
-    aria-label="Open size chart"
-    aria-expanded="false"
-  >
-    <svg class="ai-size-chart-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M2 12h20M2 12l4-4M2 12l4 4M22 12l-4-4M22 12l-4 4M7 12v3M12 12v4M17 12v3"/>
-    </svg>
-    {{ block.settings.text_label }}
-  </span>
+  <div class="ai-size-chart-row-{{ ai_gen_id }}">
+    <span class="ai-size-chart-prefix-{{ ai_gen_id }}">Before order, check size chart</span>
+    <span
+      class="ai-size-chart-text-{{ ai_gen_id }}"
+      role="button"
+      tabindex="0"
+      aria-label="Open size chart"
+      aria-expanded="false"
+    >
+      <svg class="ai-size-chart-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 6H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1zM6 10v4M9 10v2M12 10v4M15 10v2M18 10v4"/>
+      </svg>
+      {{ block.settings.text_label }}
+    </span>
+  </div>
 
   <div class="ai-size-chart-modal-{{ ai_gen_id }}" role="dialog" aria-modal="true" aria-labelledby="size-chart-title-{{ ai_gen_id }}">
     <div class="ai-size-chart-modal-content-{{ ai_gen_id }}">
