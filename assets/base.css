@@ -4975,17 +4975,22 @@ product-recommendations:has([data-has-recommendations='false']) {
   }
 }
 
+[ref="priceContainer"]{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
 .compare-at-price{
     text-decoration: line-through;
     color: #8a8a8a;
-    margin-right: 6px;
     font-size: 18px;
 }
 
 .price{
 font-weight:500;
 font-size: 18px;
-margin-right:6px;
 }
 
 .save-badge{
@@ -4998,6 +5003,6 @@ margin-right:6px;
   padding:4px 10px;
   border-radius:6px;
   letter-spacing:0.02em;
-  margin-top:2px;
+  white-space:nowrap;
 }
 
