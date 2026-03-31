@@ -11,6 +11,18 @@
     max-width: 100%;
   }
 
+  .ai-size-chart-wrapper-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: {{ block.settings.text_font_size }}px;
+  }
+
+  .ai-size-chart-prefix-{{ ai_gen_id }} {
+    color: {{ block.settings.prefix_color }};
+    font-size: {{ block.settings.text_font_size }}px;
+  }
+
   .ai-size-chart-text-{{ ai_gen_id }} {
     display: inline-block;
     color: {{ block.settings.text_color }};
@@ -18,6 +30,7 @@
     cursor: pointer;
     text-decoration: {{ block.settings.text_decoration }};
     transition: all 0.3s ease;
+    font-weight: 600;
   }
 
   .ai-size-chart-text-{{ ai_gen_id }}:hover {
@@ -139,15 +152,18 @@
 {% endstyle %}
 
 <size-chart-{{ ai_gen_id }} class="ai-size-chart-container-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
-  <span
-    class="ai-size-chart-text-{{ ai_gen_id }}"
-    role="button"
-    tabindex="0"
-    aria-label="Open size chart"
-    aria-expanded="false"
-  >
-    {{ block.settings.text_label }}
-  </span>
+  <div class="ai-size-chart-wrapper-{{ ai_gen_id }}">
+    <span class="ai-size-chart-prefix-{{ ai_gen_id }}">{{ block.settings.prefix_text }}</span>
+    <span
+      class="ai-size-chart-text-{{ ai_gen_id }}"
+      role="button"
+      tabindex="0"
+      aria-label="Open size chart"
+      aria-expanded="false"
+    >
+      {{ block.settings.text_label }}
+    </span>
+  </div>
 
   <div class="ai-size-chart-modal-{{ ai_gen_id }}" role="dialog" aria-modal="true" aria-labelledby="size-chart-title-{{ ai_gen_id }}">
     <div class="ai-size-chart-modal-content-{{ ai_gen_id }}">
@@ -271,8 +287,20 @@
     },
     {
       "type": "text",
+      "id": "prefix_text",
+      "label": "Prefix text (before link)",
+      "default": "Before order, check size chart"
+    },
+    {
+      "type": "color",
+      "id": "prefix_color",
+      "label": "Prefix text color",
+      "default": "#333333"
+    },
+    {
+      "type": "text",
       "id": "text_label",
-      "label": "Text",
+      "label": "Link text (in red)",
       "default": "Size Chart"
     },
     {
