@@ -57,14 +57,14 @@
     assign use_currency = true
   endif
 
-    assign price = price | money
-    assign compare_at_price = compare_at_price | money
-    assign price_min = price_min | money
-    assign price_max = price_max | money
-    assign save_amount = save_amount | money
+    assign price = price | money | remove: '.00'
+    assign compare_at_price = compare_at_price | money | remove: '.00'
+    assign price_min = price_min | money | remove: '.00'
+    assign price_max = price_max | money | remove: '.00'
+    assign save_amount = save_amount | money | remove: '.00'
 -%}
 
-<div ref="priceContainer">
+<div ref="priceContainer" style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
   {% if has_volume_pricing %}
     {% if show_compare_price %}
       <span role="group">

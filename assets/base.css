@@ -4975,13 +4975,6 @@ product-recommendations:has([data-has-recommendations='false']) {
   }
 }
 
-[ref="priceContainer"]{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:6px;
-}
-
 .compare-at-price{
     text-decoration: line-through;
     color: #8a8a8a;
