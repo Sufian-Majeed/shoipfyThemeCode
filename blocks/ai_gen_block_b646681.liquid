@@ -11,31 +11,27 @@
     max-width: 100%;
   }
 
-  .ai-size-chart-wrapper-{{ ai_gen_id }} {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: {{ block.settings.text_font_size }}px;
-  }
-
-  .ai-size-chart-prefix-{{ ai_gen_id }} {
-    color: {{ block.settings.prefix_color }};
-    font-size: {{ block.settings.text_font_size }}px;
-  }
-
   .ai-size-chart-text-{{ ai_gen_id }} {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     color: {{ block.settings.text_color }};
     font-size: {{ block.settings.text_font_size }}px;
+    font-weight: 600;
     cursor: pointer;
     text-decoration: {{ block.settings.text_decoration }};
     transition: all 0.3s ease;
-    font-weight: 600;
   }
 
   .ai-size-chart-text-{{ ai_gen_id }}:hover {
     color: {{ block.settings.text_hover_color }};
     text-decoration: {{ block.settings.text_hover_decoration }};
+  }
+
+  .ai-size-chart-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.text_font_size }}px;
+    height: {{ block.settings.text_font_size }}px;
+    flex-shrink: 0;
   }
 
   .ai-size-chart-modal-{{ ai_gen_id }} {
@@ -152,18 +148,18 @@
 {% endstyle %}
 
 <size-chart-{{ ai_gen_id }} class="ai-size-chart-container-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
-  <div class="ai-size-chart-wrapper-{{ ai_gen_id }}">
-    <span class="ai-size-chart-prefix-{{ ai_gen_id }}">{{ block.settings.prefix_text }}</span>
-    <span
-      class="ai-size-chart-text-{{ ai_gen_id }}"
-      role="button"
-      tabindex="0"
-      aria-label="Open size chart"
-      aria-expanded="false"
-    >
-      {{ block.settings.text_label }}
-    </span>
-  </div>
+  <span
+    class="ai-size-chart-text-{{ ai_gen_id }}"
+    role="button"
+    tabindex="0"
+    aria-label="Open size chart"
+    aria-expanded="false"
+  >
+    <svg class="ai-size-chart-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 12h20M2 12l4-4M2 12l4 4M22 12l-4-4M22 12l-4 4M7 12v3M12 12v4M17 12v3"/>
+    </svg>
+    {{ block.settings.text_label }}
+  </span>
 
   <div class="ai-size-chart-modal-{{ ai_gen_id }}" role="dialog" aria-modal="true" aria-labelledby="size-chart-title-{{ ai_gen_id }}">
     <div class="ai-size-chart-modal-content-{{ ai_gen_id }}">
@@ -287,20 +283,8 @@
     },
     {
       "type": "text",
-      "id": "prefix_text",
-      "label": "Prefix text (before link)",
-      "default": "Before order, check size chart"
-    },
-    {
-      "type": "color",
-      "id": "prefix_color",
-      "label": "Prefix text color",
-      "default": "#333333"
-    },
-    {
-      "type": "text",
       "id": "text_label",
-      "label": "Link text (in red)",
+      "label": "Text",
       "default": "Size Chart"
     },
     {
