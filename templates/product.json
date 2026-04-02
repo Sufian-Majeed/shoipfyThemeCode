@@ -68,10 +68,6 @@
             "padding-inline-end": 16
           },
           "blocks": {
-            "judge_me_reviews_preview_badge_33X3YJ": {
-              "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-              "settings": {}
-            },
             "group_icgrde": {
               "type": "group",
               "name": "Header",
@@ -166,9 +162,14 @@
                 "price_tVjtKg"
               ]
             },
+            "judge_me_reviews_preview_badge_33X3YJ": {
+              "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+              "settings": {}
+            },
             "review_tHLhLM": {
               "type": "review",
               "name": "t:names.product_review_stars",
+              "disabled": true,
               "settings": {
                 "stars_style": "shaded",
                 "show_number": true,
@@ -534,8 +535,8 @@
             }
           },
           "block_order": [
-            "judge_me_reviews_preview_badge_33X3YJ",
             "group_icgrde",
+            "judge_me_reviews_preview_badge_33X3YJ",
             "review_tHLhLM",
             "divider_VJhene",
             "variant_picker_PdCMcW",
