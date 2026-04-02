@@ -180,7 +180,7 @@
               },
               "blocks": {}
             },
-            "divider_VJhene": {
+            "divider_XidY7F": {
               "type": "_divider",
               "name": "t:names.divider",
               "settings": {
@@ -538,7 +538,7 @@
             "group_icgrde",
             "judge_me_reviews_preview_badge_33X3YJ",
             "review_tHLhLM",
-            "divider_VJhene",
+            "divider_XidY7F",
             "variant_picker_PdCMcW",
             "inventory_status_new",
             "ai_gen_block_b646681_EKnp3M",
@@ -585,6 +585,18 @@
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
+        "divider_MVxiq6": {
+          "type": "_divider",
+          "name": "t:names.divider",
+          "settings": {
+            "thickness": 1,
+            "corner_radius": "square",
+            "width_percent": 100,
+            "padding-block-start": 0,
+            "padding-block-end": 0
+          },
+          "blocks": {}
+        },
         "text_cbcgyb": {
           "type": "text",
           "name": "t:names.header",
@@ -701,6 +713,7 @@
         }
       },
       "block_order": [
+        "divider_MVxiq6",
         "text_cbcgyb"
       ],
       "name": "t:names.product_recommendations",
