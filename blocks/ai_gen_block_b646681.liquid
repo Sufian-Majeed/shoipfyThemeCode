@@ -41,8 +41,8 @@
   }
 
   .ai-size-chart-icon-{{ ai_gen_id }} {
-    width: {{ block.settings.text_font_size }}px;
-    height: {{ block.settings.text_font_size }}px;
+    width: {{ block.settings.text_font_size | plus: 4 }}px;
+    height: {{ block.settings.text_font_size | plus: 4 }}px;
     flex-shrink: 0;
   }
 
