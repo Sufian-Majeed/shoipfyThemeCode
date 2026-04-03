@@ -324,7 +324,7 @@
                 "delivery_days_min": 5,
                 "delivery_days_max": 7,
                 "desktop_width_percent": 100,
-                "section_padding": 5,
+                "section_padding": 0,
                 "icon_size": 50,
                 "icon_border_width": 2,
                 "progress_line_width": 2,
