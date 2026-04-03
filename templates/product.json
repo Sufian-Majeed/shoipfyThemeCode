@@ -532,6 +532,10 @@
                 "faq_row_returns",
                 "faq_row_care"
               ]
+            },
+            "cod_badge_main": {
+              "type": "cod-badge",
+              "settings": {}
             }
           },
           "block_order": [
@@ -544,6 +548,7 @@
             "ai_gen_block_b646681_EKnp3M",
             "ai_gen_block_e5ec435_qCAiAP",
             "buy_buttons_eYQEYi",
+            "cod_badge_main",
             "payment_icons_trust",
             "ai_gen_block_e53cb94_ePhydf",
             "image_kqmbfM",

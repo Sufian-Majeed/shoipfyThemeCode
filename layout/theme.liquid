@@ -124,6 +124,11 @@
       data-product-transition="{{ settings.transition_to_main_product }}"
       data-template="{{ template }}"
     >
+      {% if template.name == 'cart' and cart.item_count > 0 %}
+        <div style="max-width:600px;margin:16px auto 0;padding:0 16px;">
+          {% render 'free-shipping-bar' %}
+        </div>
+      {% endif %}
       {{ content_for_layout }}
     </main>
 
