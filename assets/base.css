@@ -4999,3 +4999,11 @@ font-size: 18px;
   white-space:nowrap;
 }
 
+
+/* Hide duplicate mobile/desktop slideshow controls in hero */
+@media screen and (min-width: 750px) {
+  .hero .mobile\:hidden { display: none !important; }
+}
+@media screen and (max-width: 749px) {
+  .hero .desktop\:hidden { display: none !important; }
+}

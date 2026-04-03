@@ -34,8 +34,8 @@
         }
       },
       "block_order": [
-        "announcement_XwfATT",
-        "announcement_BxgCk9"
+        "announcement_BxgCk9",
+        "announcement_XwfATT"
       ],
       "name": "t:names.announcement_bar",
       "settings": {
