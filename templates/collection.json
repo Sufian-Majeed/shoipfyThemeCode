@@ -197,20 +197,12 @@
             "swatches_card": {
               "type": "swatches",
               "settings": {}
-            },
-            "buy_buttons_card": {
-              "type": "buy-buttons",
-              "settings": {
-                "show_buy_it_now": false,
-                "show_quantity_selector": false
-              }
             }
           },
           "block_order": [
             "card-gallery",
             "product_title_4nY4eT",
             "price_EzJzMm",
-            "buy_buttons_card",
             "swatches_card"
           ]
         }
