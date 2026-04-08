@@ -4997,11 +4997,25 @@ font-size: 18px;
   border-radius:6px;
   letter-spacing:0.02em;
   white-space:nowrap;
+  flex-shrink:0;
 }
 .save-badge--small{
   font-size:11px;
   padding:2px 7px;
   border-radius:4px;
+}
+@media screen and (max-width:749px){
+  [ref="priceContainer"], div[ref="priceContainer"]{
+    display:flex !important;
+    flex-wrap:wrap !important;
+    align-items:center !important;
+    gap:4px !important;
+    row-gap:4px !important;
+  }
+  .save-badge{
+    font-size:11px;
+    padding:3px 8px;
+  }
 }
 /* Bigger discount % badge on collection cards */
 .product-card .badge, .card .badge {
