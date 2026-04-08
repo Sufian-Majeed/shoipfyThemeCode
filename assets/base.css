@@ -4998,6 +4998,17 @@ font-size: 18px;
   letter-spacing:0.02em;
   white-space:nowrap;
 }
+.save-badge--small{
+  font-size:11px;
+  padding:2px 7px;
+  border-radius:4px;
+}
+/* Bigger discount % badge on collection cards */
+.product-card .badge, .card .badge {
+  font-size:13px !important;
+  padding:5px 9px !important;
+  font-weight:700 !important;
+}
 
 
 /* Hide duplicate mobile/desktop slideshow controls in hero */

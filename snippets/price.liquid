@@ -94,9 +94,7 @@
         <span class="price">{{ price | default: '&nbsp;' }}</span>
       </span>
 
-      {% if template.name == 'product' %}
-        <span class="save-badge">Save {{ save_amount }} &nbsp;·&nbsp; {{ save_percent }}% OFF</span>
-      {% endif %}
+      <span class="save-badge {% if template.name != 'product' %}save-badge--small{% endif %}">Save {{ save_amount }} · {{ save_percent }}% OFF</span>
 
     {% else %}
       <span class="price">{{ price | default: '&nbsp;' }}</span>
