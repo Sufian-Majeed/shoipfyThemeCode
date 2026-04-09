@@ -347,51 +347,19 @@
         "vertical_alignment": "center",
         "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 8,
+        "gap": 0,
         "section_width": "full-width",
         "section_height": "custom",
-        "section_height_custom": 220,
-        "color_scheme": "scheme-5",
+        "section_height_custom": 300,
+        "color_scheme": "scheme-1",
         "background_media": "image",
         "background_image_position": "cover",
-        "toggle_overlay": true,
-        "overlay_color": "#00000050",
-        "overlay_style": "solid",
+        "toggle_overlay": false,
         "padding-block-start": 0,
         "padding-block-end": 0
       },
-      "blocks": {
-        "banner_title": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>Jigerz Special</h2>",
-            "alignment": "center",
-            "type_preset": "h2",
-            "color": "#ffffff",
-            "width": "100%",
-            "padding-block-start": 0,
-            "padding-block-end": 0
-          },
-          "blocks": {}
-        },
-        "banner_sub": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Exclusive styles crafted for the bold & trendy</p>",
-            "alignment": "center",
-            "type_preset": "paragraph",
-            "color": "#ffffffcc",
-            "width": "100%",
-            "padding-block-start": 0,
-            "padding-block-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "banner_title",
-        "banner_sub"
-      ]
+      "blocks": {},
+      "block_order": []
     }
   },
   "order": [
