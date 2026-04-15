@@ -118,27 +118,29 @@
     bar.id = 'swatch-quickpick';
     Object.assign(bar.style, {
       position: 'fixed',
-      bottom: '0',
-      left: '0',
-      right: '0',
-      background: '#fff',
-      borderTop: '1px solid #e5e7eb',
-      padding: '10px 16px',
+      bottom: '16px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      background: 'rgba(0,0,0,0.55)',
+      backdropFilter: 'blur(8px)',
+      borderRadius: '50px',
+      padding: '6px 12px',
       display: 'none',
       alignItems: 'center',
       justifyContent: 'center',
-      gap: '8px',
+      gap: '6px',
       zIndex: '98',
-      boxShadow: '0 -2px 10px rgba(0,0,0,0.10)',
+      boxShadow: '0 2px 12px rgba(0,0,0,0.20)',
+      width: 'auto',
     });
 
     const label = document.createElement('span');
     Object.assign(label.style, {
-      fontSize: '12px',
+      fontSize: '11px',
       fontWeight: '600',
-      color: '#444',
+      color: '#fff',
       whiteSpace: 'nowrap',
-      marginRight: '4px',
+      marginRight: '2px',
     });
     label.textContent = 'Color:';
     bar.appendChild(label);
