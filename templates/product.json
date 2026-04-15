@@ -313,35 +313,6 @@
               },
               "blocks": {}
             },
-            "ai_gen_block_e53cb94_ePhydf": {
-              "type": "ai_gen_block_e53cb94",
-              "settings": {
-                "step_1_title": "Order Placed",
-                "step_2_title": "Order Dispatched",
-                "step_3_title": "Order Delivered",
-                "dispatch_days_min": 2,
-                "dispatch_days_max": 3,
-                "delivery_days_min": 5,
-                "delivery_days_max": 7,
-                "desktop_width_percent": 100,
-                "section_padding": 0,
-                "icon_size": 50,
-                "icon_border_width": 2,
-                "progress_line_width": 2,
-                "step_title_size": 14,
-                "step_date_size": 12,
-                "text_color": "#080808",
-                "date_color": "#666666",
-                "progress_line_color": "#e6e6e6",
-                "icon_background_color": "#f5f5f5",
-                "icon_border_color": "#e6e6e6",
-                "icon_color": "#666666",
-                "active_icon_background_color": "#000000",
-                "active_icon_border_color": "#000000",
-                "active_icon_color": "#ffffff"
-              },
-              "blocks": {}
-            },
             "image_kqmbfM": {
               "type": "image",
               "name": "t:names.image",
@@ -561,6 +532,10 @@
                 "min_days": 3,
                 "max_days": 5
               }
+            },
+            "cod_badge_main": {
+              "type": "cod-badge",
+              "settings": {}
             }
           },
           "block_order": [
@@ -575,8 +550,8 @@
             "ai_gen_block_e5ec435_qCAiAP",
             "delivery_estimate",
             "buy_buttons_eYQEYi",
+            "cod_badge_main",
             "payment_icons_trust",
-            "ai_gen_block_e53cb94_ePhydf",
             "image_kqmbfM",
             "faq_accordion_main"
           ]
