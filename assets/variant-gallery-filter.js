@@ -1,8 +1,8 @@
 // @ts-nocheck
 /**
- * Variant Gallery Filter
- * Filters product gallery images based on selected color variant.
- * Images must have alt text containing their color variant name (e.g. "crimson-navy-stripe").
+ * Variant Gallery Filter + Sticky Swatch Bar
+ * - Filters gallery images by selected color (via img alt text)
+ * - Shows a sticky swatch bar when color swatches scroll out of view
  */
 
 (function () {
@@ -10,8 +10,7 @@
     return str.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
   }
 
-  function filterGallery(colorHandle) {
-    // The product media gallery uses a <media-gallery> custom element
+  function filterGallery(colorHandle, scrollToGallery) {
     const gallery = document.querySelector('media-gallery');
     if (!gallery) return;
 
@@ -24,7 +23,6 @@
     slides.forEach((slide, i) => {
       const img = slide.querySelector('img');
       if (!img) {
-        // Non-image media (video/model) — always show
         slide.style.display = '';
         slide.removeAttribute('hidden');
         return;
@@ -32,7 +30,6 @@
 
       const altHandle = toHandle(img.alt || '');
 
-      // Show if: no alt text set, alt contains color, or color contains alt
       if (!altHandle || altHandle.includes(colorHandle) || colorHandle.includes(altHandle)) {
         slide.style.display = '';
         slide.removeAttribute('hidden');
@@ -44,7 +41,6 @@
       }
     });
 
-    // No matches found — fall back to showing all slides
     if (matchCount === 0) {
       slides.forEach((slide) => {
         slide.style.display = '';
@@ -53,7 +49,7 @@
       return;
     }
 
-    // Sync thumbnail visibility with slide visibility
+    // Sync thumbnail visibility
     const thumbs = gallery.querySelectorAll('.slideshow-controls__thumbnail, [ref="thumbnailButton[]"]');
     if (thumbs.length) {
       slides.forEach((slide, i) => {
@@ -71,39 +67,174 @@
       }
     }
 
-    // Scroll gallery into view so user can see the filtered images
-    gallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Scroll gallery into view (only on user swatch click, not on initial load)
+    if (scrollToGallery) {
+      gallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   function getColorFromVariant(variant) {
     if (!variant) return null;
-    // option1 is typically Color in this store
     const color = variant.option1 || (variant.options && variant.options[0]);
     return color ? toHandle(color) : null;
   }
 
-  // Listen for variant change events (bubbles from variant-picker to document)
+  // Listen for variant change events
   document.addEventListener('variant:update', function (e) {
     const variant = e.detail && e.detail.resource;
     if (!variant) return;
     const colorHandle = getColorFromVariant(variant);
-    if (colorHandle) filterGallery(colorHandle);
+    if (colorHandle) filterGallery(colorHandle, true);
   });
 
-  // Also handle initial page load — filter based on selected variant
-  document.addEventListener('DOMContentLoaded', function () {
-    // The selected variant JSON is inside variant-picker > script[type="application/json"]
+  // Initial page load — retry until slideshow is ready
+  function tryInitialFilter(attempts) {
     const variantDataEl = document.querySelector('variant-picker script[type="application/json"]');
     if (!variantDataEl) return;
 
     try {
       const variant = JSON.parse(variantDataEl.textContent);
-      if (variant) {
-        const colorHandle = getColorFromVariant(variant);
-        if (colorHandle) {
-          setTimeout(() => filterGallery(colorHandle), 300);
+      if (!variant) return;
+      const colorHandle = getColorFromVariant(variant);
+      if (!colorHandle) return;
+
+      const gallery = document.querySelector('media-gallery');
+      const slides = gallery && gallery.querySelectorAll('slideshow-slide');
+
+      if (!slides || !slides.length) {
+        // Gallery not ready yet — retry up to 10 times
+        if (attempts < 10) {
+          setTimeout(() => tryInitialFilter(attempts + 1), 200);
         }
+        return;
       }
+
+      filterGallery(colorHandle, false);
     } catch (e) {}
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(() => tryInitialFilter(0), 300);
+  });
+
+  // ── Sticky Swatch Bar ──────────────────────────────────────────────────────
+
+  function createStickySwatch() {
+    const colorFieldset = document.querySelector('.variant-option--swatches');
+    if (!colorFieldset) return;
+
+    const sticky = document.createElement('div');
+    sticky.id = 'sticky-swatches';
+    Object.assign(sticky.style, {
+      position: 'fixed',
+      bottom: '72px',
+      left: '0',
+      right: '0',
+      background: '#fff',
+      borderTop: '1px solid #e5e7eb',
+      padding: '8px 16px',
+      display: 'none',
+      alignItems: 'center',
+      gap: '8px',
+      zIndex: '98',
+      boxShadow: '0 -2px 8px rgba(0,0,0,0.08)',
+      overflowX: 'auto',
+    });
+
+    const label = document.createElement('span');
+    Object.assign(label.style, {
+      fontSize: '12px',
+      fontWeight: '600',
+      color: '#666',
+      whiteSpace: 'nowrap',
+      marginRight: '4px',
+    });
+    label.textContent = 'Color:';
+    sticky.appendChild(label);
+
+    // Clone each swatch label (without the radio input to avoid form conflicts)
+    const realLabels = colorFieldset.querySelectorAll('label.variant-option__button-label--has-swatch');
+    realLabels.forEach((realLabel, idx) => {
+      const wrapper = document.createElement('button');
+      wrapper.type = 'button';
+      Object.assign(wrapper.style, {
+        background: 'none',
+        border: 'none',
+        padding: '0',
+        cursor: 'pointer',
+        borderRadius: '6px',
+        flexShrink: '0',
+      });
+
+      // Copy just the swatch visual element
+      const swatchEl = realLabel.querySelector('.swatch');
+      if (swatchEl) {
+        const clonedSwatch = swatchEl.cloneNode(true);
+        wrapper.appendChild(clonedSwatch);
+      }
+
+      // Mark initially selected
+      const realInput = realLabel.querySelector('input');
+      if (realInput && realInput.checked) {
+        wrapper.style.outline = '2px solid #000';
+        wrapper.style.outlineOffset = '3px';
+      }
+
+      wrapper.addEventListener('click', function () {
+        const input = realLabel.querySelector('input');
+        if (input && !input.checked) {
+          input.click();
+        }
+      });
+
+      sticky.dataset['label' + idx] = idx;
+      sticky.appendChild(wrapper);
+    });
+
+    document.body.appendChild(sticky);
+
+    // Update selected outline when variant changes
+    document.addEventListener('variant:update', function () {
+      const buttons = sticky.querySelectorAll('button');
+      realLabels.forEach((realLabel, idx) => {
+        const input = realLabel.querySelector('input');
+        const btn = buttons[idx];
+        if (!btn) return;
+        if (input && input.checked) {
+          btn.style.outline = '2px solid #000';
+          btn.style.outlineOffset = '3px';
+        } else {
+          btn.style.outline = '';
+          btn.style.outlineOffset = '';
+        }
+      });
+    });
+
+    // Adjust bottom when sticky add-to-cart activates
+    const stickyBar = document.querySelector('.sticky-add-to-cart__bar');
+    function updateBottom() {
+      if (stickyBar && stickyBar.getAttribute('data-stuck') === 'true') {
+        sticky.style.bottom = (stickyBar.offsetHeight + 2) + 'px';
+      } else {
+        sticky.style.bottom = '72px';
+      }
+    }
+    if (stickyBar) {
+      new MutationObserver(updateBottom).observe(stickyBar, { attributes: true, attributeFilter: ['data-stuck'] });
+    }
+
+    // Show sticky bar when color swatches scroll out of view
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        sticky.style.display = entry.isIntersecting ? 'none' : 'flex';
+        if (!entry.isIntersecting) updateBottom();
+      });
+    }, { threshold: 0 });
+
+    observer.observe(colorFieldset);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(createStickySwatch, 500);
   });
 })();
