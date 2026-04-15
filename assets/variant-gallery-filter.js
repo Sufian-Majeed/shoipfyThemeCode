@@ -164,7 +164,7 @@
 
       const realInput = realLabel.querySelector('input');
       if (realInput && realInput.checked) {
-        btn.style.outline = '2px solid #000';
+        btn.style.outline = '2px solid #fff';
         btn.style.outlineOffset = '3px';
       }
 
