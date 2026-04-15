@@ -92,7 +92,6 @@
 
   // Also handle initial page load — filter based on selected variant
   document.addEventListener('DOMContentLoaded', function () {
-    // The selected variant JSON is inside variant-picker > script[type="application/json"]
     const variantDataEl = document.querySelector('variant-picker script[type="application/json"]');
     if (!variantDataEl) return;
 
@@ -105,5 +104,111 @@
         }
       }
     } catch (e) {}
+  });
+
+  // ── Swatch Quick-Pick Bar ───────────────────────────────────────────────────
+  // Shows at bottom when real swatches are below viewport (page load or scroll back up)
+  // Hides when real swatches are visible or above viewport (scrolled past them)
+
+  function createSwatchBar() {
+    const colorFieldset = document.querySelector('.variant-option--swatches');
+    if (!colorFieldset) return;
+
+    const bar = document.createElement('div');
+    bar.id = 'swatch-quickpick';
+    Object.assign(bar.style, {
+      position: 'fixed',
+      bottom: '0',
+      left: '0',
+      right: '0',
+      background: '#fff',
+      borderTop: '1px solid #e5e7eb',
+      padding: '10px 16px',
+      display: 'none',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '8px',
+      zIndex: '98',
+      boxShadow: '0 -2px 10px rgba(0,0,0,0.10)',
+    });
+
+    const label = document.createElement('span');
+    Object.assign(label.style, {
+      fontSize: '12px',
+      fontWeight: '600',
+      color: '#444',
+      whiteSpace: 'nowrap',
+      marginRight: '4px',
+    });
+    label.textContent = 'Color:';
+    bar.appendChild(label);
+
+    const realLabels = colorFieldset.querySelectorAll('label.variant-option__button-label--has-swatch');
+
+    realLabels.forEach(function (realLabel) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      Object.assign(btn.style, {
+        background: 'none',
+        border: 'none',
+        padding: '0',
+        cursor: 'pointer',
+        borderRadius: '6px',
+        flexShrink: '0',
+      });
+
+      const swatchEl = realLabel.querySelector('.swatch');
+      if (swatchEl) btn.appendChild(swatchEl.cloneNode(true));
+
+      const realInput = realLabel.querySelector('input');
+      if (realInput && realInput.checked) {
+        btn.style.outline = '2px solid #000';
+        btn.style.outlineOffset = '3px';
+      }
+
+      btn.addEventListener('click', function () {
+        const input = realLabel.querySelector('input');
+        if (input && !input.checked) input.click();
+      });
+
+      bar.appendChild(btn);
+    });
+
+    document.body.appendChild(bar);
+
+    // Keep selected outline in sync
+    document.addEventListener('variant:update', function () {
+      const buttons = bar.querySelectorAll('button');
+      realLabels.forEach(function (realLabel, idx) {
+        const input = realLabel.querySelector('input');
+        const btn = buttons[idx];
+        if (!btn) return;
+        const selected = input && input.checked;
+        btn.style.outline = selected ? '2px solid #000' : '';
+        btn.style.outlineOffset = selected ? '3px' : '';
+      });
+    });
+
+    // Show/hide based on where real swatches are relative to viewport
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          // Real swatches are visible — hide bar
+          bar.style.display = 'none';
+        } else if (entry.boundingClientRect.top > 0) {
+          // Swatches are BELOW viewport (not yet reached, or scrolled back above) — show bar
+          bar.style.display = 'flex';
+        } else {
+          // Swatches are ABOVE viewport (scrolled past them going down) — hide bar
+          bar.style.display = 'none';
+        }
+      });
+    }, { threshold: 0 });
+
+    observer.observe(colorFieldset);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(createSwatchBar, 500);
   });
 })();
