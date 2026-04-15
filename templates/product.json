@@ -525,9 +525,49 @@
                   "block_order": [
                     "faq_text_care"
                   ]
+                },
+                "faq_row_description": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Product Description",
+                    "open_by_default": true,
+                    "icon": "info",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "faq_text_description": {
+                      "type": "text",
+                      "settings": {
+                        "text": "{{ product.description }}",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "paragraph",
+                        "font": "var(--font-body--family)",
+                        "font_size": "",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "faq_text_description"
+                  ]
                 }
               },
               "block_order": [
+                "faq_row_description",
                 "faq_row_shipping",
                 "faq_row_returns",
                 "faq_row_care"
