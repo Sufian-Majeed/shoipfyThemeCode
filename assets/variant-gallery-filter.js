@@ -186,7 +186,7 @@
         const btn = buttons[idx];
         if (!btn) return;
         const selected = input && input.checked;
-        btn.style.outline = selected ? '2px solid #000' : '';
+        btn.style.outline = selected ? '2px solid #fff' : '';
         btn.style.outlineOffset = selected ? '3px' : '';
       });
     });
