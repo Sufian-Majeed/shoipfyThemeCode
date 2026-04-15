@@ -139,6 +139,7 @@
       zIndex: '98',
       boxShadow: '0 -2px 8px rgba(0,0,0,0.08)',
       overflowX: 'auto',
+      justifyContent: 'center',
     });
 
     const label = document.createElement('span');
@@ -223,13 +224,23 @@
       new MutationObserver(updateBottom).observe(stickyBar, { attributes: true, attributeFilter: ['data-stuck'] });
     }
 
-    // Show sticky bar when color swatches scroll out of view
+    // Only show sticky bar AFTER user has scrolled down to see the real swatches once
+    let userHasSeenSwatches = false;
+
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        sticky.style.display = entry.isIntersecting ? 'none' : 'flex';
-        if (!entry.isIntersecting) updateBottom();
+        if (entry.isIntersecting) {
+          // User scrolled down to see real swatches — mark seen, hide sticky
+          userHasSeenSwatches = true;
+          sticky.style.display = 'none';
+        } else if (userHasSeenSwatches) {
+          // Real swatches are off screen AND user has seen them before — show sticky
+          sticky.style.display = 'flex';
+          updateBottom();
+        }
+        // If !isIntersecting and !userHasSeenSwatches → initial load above fold, do nothing
       });
-    }, { threshold: 0 });
+    }, { threshold: 0.1 });
 
     observer.observe(colorFieldset);
   }
