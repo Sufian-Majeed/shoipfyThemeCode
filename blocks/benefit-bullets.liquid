@@ -38,8 +38,8 @@
   .benefit-bullets__row-{{ ai_gen_id }} {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 4px 12px;
+    flex-wrap: nowrap;
+    gap: 4px 8px;
     font-size: 13px;
     font-weight: 500;
     color: #1a1a1a;
@@ -48,7 +48,24 @@
   .benefit-bullets__tag-{{ ai_gen_id }} {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  .benefit-bullets__sep-{{ ai_gen_id }} {
+    color: #d1d5db;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 480px) {
+    .benefit-bullets__row-{{ ai_gen_id }} {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    .benefit-bullets__sep-{{ ai_gen_id }} {
+      display: none;
+    }
   }
 {% endstyle %}
 
@@ -59,9 +76,9 @@
   <div class="benefit-bullets__divider-{{ ai_gen_id }}"></div>
   <div class="benefit-bullets__row-{{ ai_gen_id }}">
     <span class="benefit-bullets__tag-{{ ai_gen_id }}">🚚 Free Delivery</span>
-    <span>·</span>
+    <span class="benefit-bullets__sep-{{ ai_gen_id }}">·</span>
     <span class="benefit-bullets__tag-{{ ai_gen_id }}">💰 Cash on Delivery</span>
-    <span>·</span>
+    <span class="benefit-bullets__sep-{{ ai_gen_id }}">·</span>
     <span class="benefit-bullets__tag-{{ ai_gen_id }}">⚡ Limited Stock</span>
   </div>
 </div>
