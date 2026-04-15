@@ -552,29 +552,12 @@
               "settings": {}
             },
             "benefit_bullets": {
-              "type": "text",
+              "type": "benefit-bullets",
               "settings": {
-                "text": "<p>✔️ Premium Imported Fabric &nbsp;·&nbsp; ✔️ Stretchable & Breathable &nbsp;·&nbsp; ✔️ Smart Slim Fit Look</p><p>🚚 Free Delivery Available &nbsp;·&nbsp; 💰 Cash on Delivery &nbsp;·&nbsp; ⚡ Limited Stock</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "paragraph",
-                "font": "var(--font-body--family)",
-                "font_size": "13px",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "#374151",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 4,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
+                "bullet_1": "Premium Imported Fabric",
+                "bullet_2": "Stretchable & Breathable",
+                "bullet_3": "Smart Slim Fit Look"
+              }
             }
           },
           "block_order": [

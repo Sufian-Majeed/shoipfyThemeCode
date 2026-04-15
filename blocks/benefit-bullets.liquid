@@ -1,0 +1,92 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .benefit-bullets-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 14px;
+    background: #fafafa;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    margin-block: 4px;
+  }
+
+  .benefit-bullets__item-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1a1a1a;
+    line-height: 1.4;
+  }
+
+  .benefit-bullets__divider-{{ ai_gen_id }} {
+    height: 1px;
+    background: #ebebeb;
+    margin: 2px 0;
+  }
+
+  .benefit-bullets__row-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+
+  .benefit-bullets__tag-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+{% endstyle %}
+
+<div class="benefit-bullets-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="benefit-bullets__item-{{ ai_gen_id }}">✔️ {{ block.settings.bullet_1 }}</div>
+  <div class="benefit-bullets__item-{{ ai_gen_id }}">✔️ {{ block.settings.bullet_2 }}</div>
+  <div class="benefit-bullets__item-{{ ai_gen_id }}">✔️ {{ block.settings.bullet_3 }}</div>
+  <div class="benefit-bullets__divider-{{ ai_gen_id }}"></div>
+  <div class="benefit-bullets__row-{{ ai_gen_id }}">
+    <span class="benefit-bullets__tag-{{ ai_gen_id }}">🚚 Free Delivery</span>
+    <span>·</span>
+    <span class="benefit-bullets__tag-{{ ai_gen_id }}">💰 Cash on Delivery</span>
+    <span>·</span>
+    <span class="benefit-bullets__tag-{{ ai_gen_id }}">⚡ Limited Stock</span>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Benefit Bullets",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "bullet_1",
+      "label": "Bullet 1",
+      "default": "Premium Imported Fabric"
+    },
+    {
+      "type": "text",
+      "id": "bullet_2",
+      "label": "Bullet 2",
+      "default": "Stretchable & Breathable"
+    },
+    {
+      "type": "text",
+      "id": "bullet_3",
+      "label": "Bullet 3",
+      "default": "Smart Slim Fit Look"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefit Bullets"
+    }
+  ]
+}
+{% endschema %}

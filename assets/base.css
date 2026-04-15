@@ -5032,3 +5032,10 @@ font-size: 18px;
 @media screen and (max-width: 749px) {
   .hero .desktop\:hidden { display: none !important; }
 }
+
+/* Premium benefit bullets on product page */
+.product-information__blocks [data-block-type="text"]:has(.benefit-bullets),
+.product-information [data-type="text"] p:has(✔️),
+.product-information [data-type="text"] p:has(🚚) {
+  line-height: 1.8;
+}
