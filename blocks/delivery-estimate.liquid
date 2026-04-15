@@ -1,0 +1,97 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% liquid
+  assign now = 'now' | date: '%s' | plus: 0
+  assign day_seconds = 86400
+  assign min_days = block.settings.min_days
+  assign max_days = block.settings.max_days
+  assign min_ts = now | plus: day_seconds | times: min_days | divided_by: 1 | plus: now
+  assign max_ts = now | plus: day_seconds | times: max_days | divided_by: 1 | plus: now
+
+  assign min_date = now | plus: min_days | times: day_seconds
+  assign max_date = now | plus: max_days | times: day_seconds
+
+  assign min_delivery = now | date: '%s'
+  assign min_delivery = min_delivery | plus: 0
+  assign offset_min = min_days | times: day_seconds
+  assign offset_max = max_days | times: day_seconds
+  assign ts_min = 'now' | date: '%s' | plus: offset_min
+  assign ts_max = 'now' | date: '%s' | plus: offset_max
+  assign date_min = ts_min | date: '%b %d'
+  assign date_max = ts_max | date: '%b %d'
+%}
+
+{% style %}
+  .delivery-estimate-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #166534;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .delivery-estimate__icon-{{ ai_gen_id }} {
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .delivery-estimate__text-{{ ai_gen_id }} {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media screen and (max-width: 480px) {
+    .delivery-estimate-{{ ai_gen_id }} {
+      font-size: 12px;
+      padding: 8px 10px;
+      gap: 6px;
+    }
+  }
+{% endstyle %}
+
+<div class="delivery-estimate-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <span class="delivery-estimate__icon-{{ ai_gen_id }}">🚚</span>
+  <span class="delivery-estimate__text-{{ ai_gen_id }}">
+    Order now — delivery by <strong>{{ date_min }} – {{ date_max }}</strong>
+  </span>
+</div>
+
+{% schema %}
+{
+  "name": "Delivery Estimate",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "min_days",
+      "label": "Min delivery days",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "max_days",
+      "label": "Max delivery days",
+      "min": 1,
+      "max": 14,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Delivery Estimate"
+    }
+  ]
+}
+{% endschema %}
