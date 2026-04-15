@@ -1,7 +1,8 @@
+// @ts-nocheck
 /**
  * Variant Gallery Filter
- * Filters product gallery images based on selected color variant
- * Images must have alt text matching their color variant name (e.g. "crimson-navy-stripe")
+ * Filters product gallery images based on selected color variant.
+ * Images must have alt text containing their color variant name (e.g. "crimson-navy-stripe").
  */
 
 (function () {
@@ -10,26 +11,32 @@
   }
 
   function filterGallery(colorHandle) {
-    const gallery = document.querySelector('.product-media-gallery');
+    // The product media gallery uses a <media-gallery> custom element
+    const gallery = document.querySelector('media-gallery');
     if (!gallery) return;
 
     const slides = gallery.querySelectorAll('slideshow-slide');
     if (!slides.length) return;
 
     let matchCount = 0;
-    let firstMatch = null;
+    let firstMatchIndex = -1;
 
-    slides.forEach((slide) => {
+    slides.forEach((slide, i) => {
       const img = slide.querySelector('img');
-      if (!img) return;
+      if (!img) {
+        // Non-image media (video/model) — always show
+        slide.style.display = '';
+        slide.removeAttribute('hidden');
+        return;
+      }
 
       const altHandle = toHandle(img.alt || '');
 
-      // If image has no alt text or alt matches color — show it
+      // Show if: no alt text set, alt contains color, or color contains alt
       if (!altHandle || altHandle.includes(colorHandle) || colorHandle.includes(altHandle)) {
         slide.style.display = '';
         slide.removeAttribute('hidden');
-        if (!firstMatch) firstMatch = slide;
+        if (firstMatchIndex === -1) firstMatchIndex = i;
         matchCount++;
       } else {
         slide.style.display = 'none';
@@ -37,35 +44,30 @@
       }
     });
 
-    // If no matches found (alt text not set up) — show all slides
+    // No matches found — fall back to showing all slides
     if (matchCount === 0) {
       slides.forEach((slide) => {
         slide.style.display = '';
         slide.removeAttribute('hidden');
       });
+      return;
     }
 
-    // Also filter thumbnails if present
-    const thumbs = gallery.querySelectorAll('.slideshow-controls__thumbnail');
+    // Sync thumbnail visibility with slide visibility
+    const thumbs = gallery.querySelectorAll('.slideshow-controls__thumbnail, [ref="thumbnailButton[]"]');
     if (thumbs.length) {
-      let thumbIndex = 0;
       slides.forEach((slide, i) => {
         const thumb = thumbs[i];
         if (!thumb) return;
-        if (slide.style.display === 'none') {
-          thumb.style.display = 'none';
-        } else {
-          thumb.style.display = '';
-        }
+        thumb.style.display = slide.style.display === 'none' ? 'none' : '';
       });
     }
 
-    // Go to first visible slide
-    if (firstMatch) {
+    // Navigate to first matching slide
+    if (firstMatchIndex !== -1) {
       const slideshowEl = gallery.querySelector('slideshow-component');
-      if (slideshowEl && typeof slideshowEl.goToSlide === 'function') {
-        const index = Array.from(slides).indexOf(firstMatch);
-        slideshowEl.goToSlide(index);
+      if (slideshowEl && typeof slideshowEl.select === 'function') {
+        slideshowEl.select(firstMatchIndex, undefined, { animate: false });
       }
     }
   }
@@ -77,7 +79,7 @@
     return color ? toHandle(color) : null;
   }
 
-  // Listen for variant change events
+  // Listen for variant change events (bubbles from variant-picker to document)
   document.addEventListener('variant:update', function (e) {
     const variant = e.detail && e.detail.resource;
     if (!variant) return;
@@ -87,21 +89,12 @@
 
   // Also handle initial page load — filter based on selected variant
   document.addEventListener('DOMContentLoaded', function () {
-    const selectedInput = document.querySelector(
-      'input[name="id"][data-selected], form[action="/cart/add"] input[name="id"]'
-    );
-    if (!selectedInput) return;
-
-    const variantId = selectedInput.value;
-    if (!variantId) return;
-
-    // Try to get variant data from page JSON
-    const variantDataEl = document.querySelector('[data-product-json], script[type="application/json"][data-product-json]');
+    // The selected variant JSON is inside variant-picker > script[type="application/json"]
+    const variantDataEl = document.querySelector('variant-picker script[type="application/json"]');
     if (!variantDataEl) return;
 
     try {
-      const productData = JSON.parse(variantDataEl.textContent);
-      const variant = productData.variants && productData.variants.find(v => String(v.id) === String(variantId));
+      const variant = JSON.parse(variantDataEl.textContent);
       if (variant) {
         const colorHandle = getColorFromVariant(variant);
         if (colorHandle) {
