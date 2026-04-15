@@ -179,13 +179,17 @@
     document.body.appendChild(bar);
 
     // Keep selected outline in sync
-    document.addEventListener('variant:update', function () {
+    document.addEventListener('variant:update', function (e) {
+      // Use event detail to get selected color directly — no DOM timing issues
+      const variant = e.detail && e.detail.resource;
+      const selectedColor = variant ? toHandle(variant.option1 || '') : null;
       const buttons = bar.querySelectorAll('button');
       realLabels.forEach(function (realLabel, idx) {
-        const input = realLabel.querySelector('input');
         const btn = buttons[idx];
         if (!btn) return;
-        const selected = input && input.checked;
+        const input = realLabel.querySelector('input');
+        const inputColor = input ? toHandle(input.value || '') : null;
+        const selected = selectedColor && inputColor && inputColor === selectedColor;
         btn.style.outline = selected ? '2px solid #fff' : '';
         btn.style.outlineOffset = selected ? '3px' : '';
       });
