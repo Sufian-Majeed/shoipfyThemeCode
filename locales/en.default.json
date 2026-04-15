@@ -188,10 +188,10 @@
       "zoom_out": "Zoom out"
     },
     "inventory_low_stock_show_count": {
-      "one": "🔥 Only {{ count }} piece left - Selling fast!",
-      "other": "🔥 Only {{ count }} pieces left - Selling fast!"
+      "one": "🔥 Only a few pieces left — Selling fast!",
+      "other": "🔥 Only a few pieces left — Selling fast!"
     },
-    "inventory_low_stock": "🔥 Low stock - Selling fast!",
+    "inventory_low_stock": "🔥 Only a few pieces left — Selling fast!",
     "inventory_in_stock": "In stock",
     "inventory_out_of_stock": "Out of stock",
     "item_count": {

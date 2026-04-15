@@ -558,6 +558,31 @@
                 "bullet_2": "Stretchable & Breathable",
                 "bullet_3": "Smart Slim Fit Look"
               }
+            },
+            "delivery_line": {
+              "type": "text",
+              "settings": {
+                "text": "<p>🚚 Order now and get delivery within 3–5 business days.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "13px",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "#374151",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -570,6 +595,7 @@
             "inventory_status_new",
             "ai_gen_block_b646681_EKnp3M",
             "ai_gen_block_e5ec435_qCAiAP",
+            "delivery_line",
             "buy_buttons_eYQEYi",
             "cod_badge_main",
             "payment_icons_trust",
