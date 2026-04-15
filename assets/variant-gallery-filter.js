@@ -117,45 +117,43 @@
     setTimeout(() => tryInitialFilter(0), 300);
   });
 
-  // ── Sticky Swatch Bar ──────────────────────────────────────────────────────
+  // ── Swatch Overlay (visible on page load, disappears when user scrolls to real swatches) ──
 
-  function createStickySwatch() {
+  function createSwatchOverlay() {
     const colorFieldset = document.querySelector('.variant-option--swatches');
     if (!colorFieldset) return;
 
-    const sticky = document.createElement('div');
-    sticky.id = 'sticky-swatches';
-    Object.assign(sticky.style, {
+    const overlay = document.createElement('div');
+    overlay.id = 'swatch-overlay';
+    Object.assign(overlay.style, {
       position: 'fixed',
-      bottom: '72px',
+      bottom: '0',
       left: '0',
       right: '0',
       background: '#fff',
       borderTop: '1px solid #e5e7eb',
-      padding: '8px 16px',
-      display: 'none',
+      padding: '10px 16px',
+      display: 'flex',
       alignItems: 'center',
+      justifyContent: 'center',
       gap: '8px',
       zIndex: '98',
-      boxShadow: '0 -2px 8px rgba(0,0,0,0.08)',
-      overflowX: 'auto',
-      justifyContent: 'center',
+      boxShadow: '0 -2px 8px rgba(0,0,0,0.10)',
     });
 
     const label = document.createElement('span');
     Object.assign(label.style, {
       fontSize: '12px',
       fontWeight: '600',
-      color: '#666',
+      color: '#444',
       whiteSpace: 'nowrap',
       marginRight: '4px',
     });
     label.textContent = 'Color:';
-    sticky.appendChild(label);
+    overlay.appendChild(label);
 
-    // Clone each swatch label (without the radio input to avoid form conflicts)
     const realLabels = colorFieldset.querySelectorAll('label.variant-option__button-label--has-swatch');
-    realLabels.forEach((realLabel, idx) => {
+    realLabels.forEach((realLabel) => {
       const wrapper = document.createElement('button');
       wrapper.type = 'button';
       Object.assign(wrapper.style, {
@@ -167,14 +165,11 @@
         flexShrink: '0',
       });
 
-      // Copy just the swatch visual element
       const swatchEl = realLabel.querySelector('.swatch');
       if (swatchEl) {
-        const clonedSwatch = swatchEl.cloneNode(true);
-        wrapper.appendChild(clonedSwatch);
+        wrapper.appendChild(swatchEl.cloneNode(true));
       }
 
-      // Mark initially selected
       const realInput = realLabel.querySelector('input');
       if (realInput && realInput.checked) {
         wrapper.style.outline = '2px solid #000';
@@ -183,62 +178,33 @@
 
       wrapper.addEventListener('click', function () {
         const input = realLabel.querySelector('input');
-        if (input && !input.checked) {
-          input.click();
-        }
+        if (input && !input.checked) input.click();
       });
 
-      sticky.dataset['label' + idx] = idx;
-      sticky.appendChild(wrapper);
+      overlay.appendChild(wrapper);
     });
 
-    document.body.appendChild(sticky);
+    document.body.appendChild(overlay);
 
-    // Update selected outline when variant changes
+    // Update selected outline on variant change
     document.addEventListener('variant:update', function () {
-      const buttons = sticky.querySelectorAll('button');
+      const buttons = overlay.querySelectorAll('button');
       realLabels.forEach((realLabel, idx) => {
         const input = realLabel.querySelector('input');
         const btn = buttons[idx];
         if (!btn) return;
-        if (input && input.checked) {
-          btn.style.outline = '2px solid #000';
-          btn.style.outlineOffset = '3px';
-        } else {
-          btn.style.outline = '';
-          btn.style.outlineOffset = '';
-        }
+        btn.style.outline = (input && input.checked) ? '2px solid #000' : '';
+        btn.style.outlineOffset = (input && input.checked) ? '3px' : '';
       });
     });
 
-    // Adjust bottom when sticky add-to-cart activates
-    const stickyBar = document.querySelector('.sticky-add-to-cart__bar');
-    function updateBottom() {
-      if (stickyBar && stickyBar.getAttribute('data-stuck') === 'true') {
-        sticky.style.bottom = (stickyBar.offsetHeight + 2) + 'px';
-      } else {
-        sticky.style.bottom = '72px';
-      }
-    }
-    if (stickyBar) {
-      new MutationObserver(updateBottom).observe(stickyBar, { attributes: true, attributeFilter: ['data-stuck'] });
-    }
-
-    // Only show sticky bar AFTER user has scrolled down to see the real swatches once
-    let userHasSeenSwatches = false;
-
+    // Permanently hide overlay once real swatches scroll into view
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          // User scrolled down to see real swatches — mark seen, hide sticky
-          userHasSeenSwatches = true;
-          sticky.style.display = 'none';
-        } else if (userHasSeenSwatches) {
-          // Real swatches are off screen AND user has seen them before — show sticky
-          sticky.style.display = 'flex';
-          updateBottom();
+          overlay.style.display = 'none';
+          observer.disconnect(); // no need to watch anymore
         }
-        // If !isIntersecting and !userHasSeenSwatches → initial load above fold, do nothing
       });
     }, { threshold: 0.1 });
 
@@ -246,6 +212,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    setTimeout(createStickySwatch, 500);
+    setTimeout(createSwatchOverlay, 500);
   });
 })();
