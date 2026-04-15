@@ -70,6 +70,9 @@
         slideshowEl.select(firstMatchIndex, undefined, { animate: false });
       }
     }
+
+    // Scroll gallery into view so user can see the filtered images
+    gallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   function getColorFromVariant(variant) {
