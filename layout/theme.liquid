@@ -172,6 +172,10 @@
       </svg>
     </a>
 
+    {% if template.name == 'product' %}
+      <script src="{{ 'variant-gallery-filter.js' | asset_url }}" defer></script>
+    {% endif %}
+
     <script>
       (function() {
         var btn = document.getElementById('whatsapp-btn');
