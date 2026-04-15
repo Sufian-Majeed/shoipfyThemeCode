@@ -1,4 +1,11 @@
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% assign in_jigerz_special = false %}
+{% for collection in closest.product.collections %}
+  {% if collection.handle == 'jigerz-special' %}
+    {% assign in_jigerz_special = true %}
+  {% endif %}
+{% endfor %}
+{% if in_jigerz_special %}
 
 {% style %}
   .benefit-bullets-{{ ai_gen_id }} {
@@ -58,6 +65,8 @@
     <span class="benefit-bullets__tag-{{ ai_gen_id }}">⚡ Limited Stock</span>
   </div>
 </div>
+
+{% endif %}
 
 {% schema %}
 {
