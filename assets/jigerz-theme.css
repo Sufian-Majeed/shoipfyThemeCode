@@ -741,6 +741,156 @@ footer,
   font-weight: 300 !important;
 }
 
+/* ── Horizon Theme Precise Overrides ────────────────────── */
+
+/* Save badge: gold instead of red */
+.save-badge {
+  background: rgba(184,151,90,0.15) !important;
+  color: var(--jg-gold) !important;
+  border: 1px solid rgba(184,151,90,0.35) !important;
+  border-radius: 0 !important;
+  font-size: 10px !important;
+  padding: 3px 8px !important;
+}
+
+/* Product card: dark background */
+.product-card {
+  background-color: var(--jg-card-bg) !important;
+}
+
+/* Product card: price in gold via Cormorant Garamond */
+.product-card .price,
+.product-card product-price {
+  font-family: var(--font-primary--family) !important;
+  color: var(--jg-gold) !important;
+  font-weight: 600 !important;
+}
+
+/* Card gallery image placeholder: dark */
+.card-gallery {
+  background-color: var(--jg-card-bg) !important;
+}
+
+/* Section heading labels (eyebrow text above section titles) */
+.section-label,
+.section__label,
+.eyebrow {
+  font-family: var(--font-body--family) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  color: var(--jg-gold) !important;
+  opacity: 1 !important;
+}
+
+/* Section headings in product list / collection */
+.product-list__heading,
+.collection-list__heading,
+section h2.heading {
+  font-family: var(--font-primary--family) !important;
+  font-weight: 300 !important;
+  color: var(--jg-off-white) !important;
+}
+
+/* "View all" link: gold */
+.product-list__view-all a,
+.section__view-all,
+a.link.animate-arrow {
+  color: var(--jg-gold) !important;
+  font-family: var(--font-body--family) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* Facets / Filter horizontal bar */
+.facets-horizontal {
+  background: var(--jg-black) !important;
+  border-bottom: 1px solid var(--jg-border) !important;
+}
+
+/* Swatch outline: gold on selected */
+.variant-option--swatches input:checked + label,
+.variant-option--swatches .selected {
+  outline-color: var(--jg-gold) !important;
+  outline-offset: 2px !important;
+}
+
+/* Dropdown menus / mega nav */
+.mega-menu,
+.header__dropdown,
+.header-drawer {
+  background-color: rgba(10,10,10,0.98) !important;
+  border-color: var(--jg-border) !important;
+}
+
+/* Quantity input field in product page */
+.quantity__button,
+.quantity__input,
+.quantity {
+  background-color: var(--jg-card-bg) !important;
+  color: var(--jg-off-white) !important;
+  border-color: var(--jg-border) !important;
+  border-radius: 0 !important;
+}
+
+/* Add to cart button */
+.add-to-cart-button,
+button[name="add"],
+.product-form__submit {
+  background-color: var(--jg-gold) !important;
+  color: var(--jg-black) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-family: var(--font-body--family) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  height: 48px !important;
+}
+button[name="add"]:hover,
+.product-form__submit:hover {
+  background-color: #c9a96a !important;
+}
+
+/* Quick add hover panel */
+.quick-add-component,
+.quick-add-modal,
+[class*="quick-add"] {
+  background-color: rgba(10,10,10,0.95) !important;
+  border-color: var(--jg-border) !important;
+  border-radius: 0 !important;
+}
+
+/* Product details section headings (accordions on PDP) */
+.product__details-summary,
+details.product__details summary {
+  font-family: var(--font-body--family) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  color: var(--jg-off-white) !important;
+  border-color: var(--jg-border) !important;
+}
+
+/* Product page gallery thumbnails */
+.thumbnail-list__item--active .thumbnail,
+.thumbnail:hover {
+  border-color: var(--jg-gold) !important;
+}
+
+/* Breadcrumb */
+.breadcrumbs,
+.breadcrumbs a,
+.breadcrumb {
+  font-family: var(--font-body--family) !important;
+  font-size: 11px !important;
+  color: var(--jg-off-white) !important;
+  opacity: 0.4;
+}
+.breadcrumbs a:hover { opacity: 1; }
+
 /* ── Mobile Responsive ──────────────────────────────────── */
 @media (max-width: 768px) {
   .product__title,
