@@ -132,6 +132,89 @@
         "padding-block-end": 24
       }
     },
+    "marquee_collection": {
+      "type": "marquee",
+      "blocks": {
+        "text_m1": {
+          "type": "text",
+          "settings": {
+            "text": "🚚 Free Delivery above Rs.2,500",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "var(--font-size--base)",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "nowrap",
+            "width": "fit-content"
+          }
+        },
+        "text_m2": {
+          "type": "text",
+          "settings": {
+            "text": "💰 Cash on Delivery Available",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "var(--font-size--base)",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "nowrap",
+            "width": "fit-content"
+          }
+        },
+        "text_m3": {
+          "type": "text",
+          "settings": {
+            "text": "⚡ Limited Stock — Order Now",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "var(--font-size--base)",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "nowrap",
+            "width": "fit-content"
+          }
+        },
+        "text_m4": {
+          "type": "text",
+          "settings": {
+            "text": "✅ Easy Returns — Hassle Free",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "var(--font-size--base)",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "nowrap",
+            "width": "fit-content"
+          }
+        },
+        "text_m5": {
+          "type": "text",
+          "settings": {
+            "text": "🔥 Premium Imported Fabric",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "var(--font-size--base)",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "nowrap",
+            "width": "fit-content"
+          }
+        }
+      },
+      "block_order": ["text_m1", "text_m2", "text_m3", "text_m4", "text_m5"],
+      "settings": {
+        "movement_direction": "reverse",
+        "color_scheme": "scheme-5",
+        "padding-block-start": 10,
+        "padding-block-end": 10,
+        "gap_between_elements": 40
+      }
+    },
     "main": {
       "type": "main-collection",
       "blocks": {
@@ -394,6 +477,7 @@
   "order": [
     "collection_hero_banner",
     "section",
+    "marquee_collection",
     "main",
     "section_94KQcC"
   ]
