@@ -1,311 +1,92 @@
 /* ============================================================
-   JIGERZ Dark Luxury Theme
-   Design: Fear of God / Represent inspired editorial dark
+   JIGERZ — Dark Luxury Design Override
+   Strategy: Use theme CSS variables (set via color schemes in
+   settings_data.json). Only add what the theme cannot do on
+   its own: font override, gold price, Jigerz-specific components.
    ============================================================ */
 
-/* ── Design Tokens ──────────────────────────────────────── */
+/* ── 1. Design Tokens ───────────────────────────────────── */
 :root {
-  --jg-black:     #0a0a0a;
-  --jg-off-white: #f5f4f0;
   --jg-gold:      #b8975a;
   --jg-card-bg:   #141414;
   --jg-border:    rgba(255,255,255,0.08);
   --jg-sale-red:  #e85d04;
   --jg-cod-green: #4caf50;
 
-  /* Override theme font families */
+  /* Override theme font variables to use Google Fonts */
   --font-primary--family: 'Cormorant Garamond', serif;
   --font-body--family:    'Barlow', sans-serif;
 }
 
-/* ── Global ─────────────────────────────────────────────── */
-body {
-  background-color: var(--jg-black) !important;
-  color: var(--jg-off-white) !important;
-  font-family: var(--font-body--family) !important;
-}
-
-h1, h2, h3, h4, h5 {
-  font-family: var(--font-primary--family) !important;
-  font-weight: 300;
-  letter-spacing: 0.01em;
-}
-
-a { color: inherit; }
-
-/* ── Promo / Announcement Bar ──────────────────────────── */
-.announcement-bar,
-.announcement-bar__message,
-[class*="announcement"] {
-  background-color: var(--jg-gold) !important;
-  color: var(--jg-black) !important;
-  font-family: var(--font-body--family) !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-}
-
-/* ── Navigation ─────────────────────────────────────────── */
-header-component,
-.header,
-.header__inner,
-.header-section,
-#header-component {
-  background-color: rgba(10,10,10,0.97) !important;
-  border-bottom: 1px solid var(--jg-border) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-}
-
-.header__nav-links a,
-.header__nav a,
-.nav-links a,
-[class*="header"] a {
-  font-family: var(--font-body--family) !important;
-  font-size: 11px !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  color: var(--jg-off-white) !important;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-}
-.header__nav-links a:hover,
-.header__nav a:hover { opacity: 1; }
-
-/* ── Section Backgrounds ────────────────────────────────── */
-.shopify-section,
-section {
-  background-color: var(--jg-black);
-}
-
-/* ── Product Cards ──────────────────────────────────────── */
-.product-card,
-[class*="product-card"],
-.card,
-product-card {
-  background-color: var(--jg-card-bg) !important;
-  border: 1px solid var(--jg-border) !important;
-  border-radius: 0 !important;
-}
-
-.product-card:hover,
-[class*="product-card"]:hover {
-  border-color: rgba(184,151,90,0.3) !important;
-}
-
-/* Product card title */
-.product-card__name,
-.product-card__title,
-[class*="product-title"],
-.card__title {
-  font-family: var(--font-body--family) !important;
-  font-size: 13px !important;
-  font-weight: 400 !important;
-  color: var(--jg-off-white) !important;
-}
-
-/* Product card price — gold */
-.product-card__price,
-.price__current,
-.price--large,
-[class*="price"] .money,
-.price-item--regular,
-.price-item--sale {
-  font-family: var(--font-primary--family) !important;
-  font-size: 19px !important;
-  font-weight: 600 !important;
+/* ── 2. Gold price on product cards ─────────────────────── */
+/* Theme renders price via --color-foreground which is off-white.
+   We want price to always be gold. */
+.product-card product-price,
+.product-card .price,
+.price:not(.compare-at-price):not(.price--small) {
   color: var(--jg-gold) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 600 !important;
 }
 
-/* Compare-at price strikethrough */
-.price__compare,
-.price-item--regular.price-item--last,
-s.price-item,
-[class*="compare"] .money {
-  font-size: 12px !important;
-  opacity: 0.35 !important;
-  color: var(--jg-off-white) !important;
-  text-decoration: line-through !important;
-}
-
-/* Save badge on cards */
-.badge--sale,
-.badge.sale,
-[class*="save-badge"] {
+/* ── 3. Save badge — gold not red ───────────────────────── */
+.save-badge {
   background: rgba(184,151,90,0.15) !important;
   color: var(--jg-gold) !important;
   border: 1px solid rgba(184,151,90,0.3) !important;
-  font-size: 9px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.1em !important;
+  border-radius: 0 !important;
+}
+
+/* ── 4. Sharp corners everywhere (luxury = no radius) ───── */
+.button, button,
+.field__input, input, select, textarea,
+.card, .product-card,
+.badge, .cart-drawer,
+.modal, .drawer,
+.variant-option__value {
+  border-radius: 0 !important;
+}
+
+/* ── 5. Section label / eyebrow → gold ──────────────────── */
+.section-label,
+.section__label {
+  color: var(--jg-gold) !important;
+  font-family: 'Barlow', sans-serif !important;
+  font-size: 10px !important;
+  letter-spacing: 0.25em !important;
   text-transform: uppercase !important;
-  border-radius: 0 !important;
 }
 
-/* New / Best Seller badges */
-.badge--new,
-.badge.new {
-  background: var(--jg-gold) !important;
-  color: var(--jg-black) !important;
-  border-radius: 0 !important;
-  font-size: 9px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-}
+/* ── 6. Judge.me stars → gold ───────────────────────────── */
+.jdgm-star,
+.jdgm-prev-badge__stars,
+[class*="jdgm"] .jdgm-star { color: var(--jg-gold) !important; }
 
-/* ── Buttons ─────────────────────────────────────────────── */
-.button--primary,
-.btn--primary,
-button[name="add"],
-.button[class*="primary"] {
-  background-color: var(--jg-gold) !important;
-  color: var(--jg-black) !important;
-  border-color: var(--jg-gold) !important;
-  font-family: var(--font-body--family) !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  border-radius: 0 !important;
-}
-.button--primary:hover,
-.btn--primary:hover,
-button[name="add"]:hover {
-  background-color: #c9a96a !important;
-  border-color: #c9a96a !important;
-}
-
-.button--secondary,
-.btn--secondary {
-  background-color: transparent !important;
-  color: var(--jg-off-white) !important;
-  border-color: rgba(255,255,255,0.3) !important;
-  font-family: var(--font-body--family) !important;
-  font-size: 11px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  border-radius: 0 !important;
-}
-.button--secondary:hover { border-color: var(--jg-gold) !important; color: var(--jg-gold) !important; }
-
-/* ── Inputs / Forms ─────────────────────────────────────── */
-input,
-textarea,
-select,
-.field__input {
-  background-color: rgba(255,255,255,0.05) !important;
-  color: var(--jg-off-white) !important;
-  border-color: rgba(255,255,255,0.15) !important;
-  border-radius: 0 !important;
-  font-family: var(--font-body--family) !important;
-}
-input::placeholder,
-textarea::placeholder { color: rgba(245,244,240,0.4) !important; }
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--jg-gold) !important;
-  outline: none !important;
-  box-shadow: 0 0 0 1px var(--jg-gold) !important;
-}
-
-/* ── Variant / Swatch Picker ────────────────────────────── */
-.variant-option__label,
-.variant-option__value,
-fieldset.variant-option {
-  color: var(--jg-off-white) !important;
-  font-family: var(--font-body--family) !important;
-}
-
-/* Size pill style */
-.variant-option--pills .variant-option__value,
-[class*="variant-option"] input + label {
-  background-color: var(--jg-card-bg) !important;
-  color: var(--jg-off-white) !important;
-  border-color: rgba(255,255,255,0.15) !important;
-  border-radius: 0 !important;
-  font-size: 11px !important;
-  font-family: var(--font-body--family) !important;
-  letter-spacing: 0.05em !important;
-}
-.variant-option--pills input:checked + label,
-.variant-option--pills .variant-option__value--selected {
-  background-color: var(--jg-gold) !important;
-  color: var(--jg-black) !important;
+/* ── 7. Thumbnail active border → gold ─────────────────── */
+.thumbnail-list__item--active .thumbnail {
   border-color: var(--jg-gold) !important;
 }
 
-/* ── Product Page (PDP) ─────────────────────────────────── */
+/* ──────────────────────────────────────────────────────────
+   JIGERZ COMPONENT STYLES
+   These are new components that don't exist in the base theme.
+   No !important needed — pure CSS for custom elements.
+   ────────────────────────────────────────────────────────── */
 
-/* Badges row */
-.jg-badge-row {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-.jg-badge {
-  display: inline-block;
-  padding: 5px 12px;
-  font-family: var(--font-body--family);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  border: 1px solid rgba(255,255,255,0.2);
-  color: var(--jg-off-white);
-}
-.jg-badge--filled {
-  background: var(--jg-gold);
-  color: var(--jg-black);
-  border-color: var(--jg-gold);
-}
-.jg-badge--cod {
-  background: rgba(26,58,26,0.8);
-  color: var(--jg-cod-green);
-  border-color: rgba(76,175,80,0.3);
-}
-
-/* Product title */
-.product__title,
-h1.product-title,
-[class*="product-info"] h1 {
-  font-family: var(--font-primary--family) !important;
-  font-size: 44px !important;
-  font-weight: 300 !important;
-  line-height: 1.05 !important;
-  color: var(--jg-off-white) !important;
-  letter-spacing: 0.01em !important;
-}
-
-/* Rating row */
-.jg-rating-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-  font-family: var(--font-body--family);
-  font-size: 12px;
-}
-.jg-stars { color: var(--jg-gold); letter-spacing: 2px; }
-.jg-rating-link { color: var(--jg-gold); text-decoration: none; }
-.jg-rating-link:hover { text-decoration: underline; }
-
-/* Compare price box */
+/* ── Compare Price Box ──────────────────────────────────── */
 .jg-compare-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
   background: rgba(184,151,90,0.08);
   border: 1px solid rgba(184,151,90,0.25);
   padding: 16px 20px;
   margin-bottom: 16px;
 }
 .jg-compare-label {
-  font-family: var(--font-body--family);
+  font-family: 'Barlow', sans-serif;
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -313,36 +94,37 @@ h1.product-title,
   margin-bottom: 6px;
 }
 .jg-compare-now {
-  font-family: var(--font-primary--family);
+  font-family: 'Cormorant Garamond', serif;
   font-size: 32px;
   font-weight: 600;
   color: var(--jg-gold);
-  margin-right: 12px;
+  margin-right: 10px;
 }
 .jg-compare-was {
-  font-size: 16px;
+  font-size: 15px;
   text-decoration: line-through;
   opacity: 0.4;
 }
 .jg-save-pill {
   background: var(--jg-gold);
-  color: var(--jg-black);
+  color: #0a0a0a;
   padding: 5px 12px;
-  font-family: var(--font-body--family);
+  font-family: 'Barlow', sans-serif;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
-/* Stock indicator */
+/* ── Stock Indicator ────────────────────────────────────── */
 .jg-stock {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 20px;
-  font-family: var(--font-body--family);
+  margin-bottom: 16px;
+  font-family: 'Barlow', sans-serif;
   font-size: 12px;
 }
 .jg-stock-dot {
@@ -355,30 +137,30 @@ h1.product-title,
 }
 @keyframes jg-pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+  50%       { opacity: 0.25; }
 }
 .jg-stock-text { color: var(--jg-sale-red); font-weight: 500; }
-.jg-stock-sub { opacity: 0.45; }
+.jg-stock-sub  { opacity: 0.4; }
 
-/* Product bullets */
+/* ── Product Bullets ────────────────────────────────────── */
 .jg-bullets {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 24px;
+  gap: 7px;
+  margin-bottom: 20px;
 }
 .jg-bullet {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-family: var(--font-body--family);
+  font-family: 'Barlow', sans-serif;
   font-size: 12px;
-  opacity: 0.75;
   line-height: 1.5;
+  opacity: 0.75;
 }
 .jg-bullet-check { color: var(--jg-gold); flex-shrink: 0; }
 
-/* Delivery line */
+/* ── Delivery Line ──────────────────────────────────────── */
 .jg-delivery {
   display: flex;
   align-items: center;
@@ -386,533 +168,49 @@ h1.product-title,
   background: var(--jg-card-bg);
   border: 1px solid var(--jg-border);
   padding: 12px 16px;
-  font-family: var(--font-body--family);
+  font-family: 'Barlow', sans-serif;
   font-size: 12px;
   opacity: 0.8;
   margin-bottom: 20px;
 }
 
-/* Add to cart row */
-.jg-add-row {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-.jg-qty {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid var(--jg-border);
-  padding: 0 4px;
-  height: 48px;
-}
-.jg-qty-btn {
-  background: none;
-  border: none;
-  color: var(--jg-off-white);
-  font-size: 18px;
-  padding: 0 10px;
-  cursor: pointer;
-  line-height: 1;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-}
-.jg-qty-btn:hover { opacity: 1; }
-.jg-qty-val { font-family: var(--font-body--family); font-size: 14px; }
-
-/* Buy Now button */
-.jg-buy-now {
-  width: 100%;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.3);
-  color: var(--jg-off-white);
-  padding: 14px;
-  font-family: var(--font-body--family);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s;
-  margin-bottom: 24px;
-}
-.jg-buy-now:hover { border-color: var(--jg-gold); color: var(--jg-gold); }
-
-/* Trust badges */
+/* ── Trust Badges (PDP) ─────────────────────────────────── */
 .jg-trust-badges {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border: 1px solid var(--jg-border);
-  margin-bottom: 28px;
+  margin-top: 20px;
 }
 .jg-trust-badge {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 16px 8px;
+  gap: 5px;
+  padding: 14px 8px;
   border-right: 1px solid var(--jg-border);
   text-align: center;
 }
 .jg-trust-badge:last-child { border-right: none; }
-.jg-trust-icon { font-size: 18px; opacity: 0.7; }
+.jg-trust-icon { font-size: 17px; opacity: 0.65; }
 .jg-trust-text {
-  font-family: var(--font-body--family);
-  font-size: 10px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 9px;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  opacity: 0.6;
+  opacity: 0.55;
   line-height: 1.4;
 }
 
-/* Accordion */
-.jg-accordion { border-top: 1px solid var(--jg-border); }
-.jg-accordion-item { border-bottom: 1px solid var(--jg-border); }
-.jg-accordion-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background: none;
-  border: none;
-  color: var(--jg-off-white);
-  padding: 16px 0;
-  font-family: var(--font-body--family);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  cursor: pointer;
-  text-align: left;
-}
-.jg-accordion-icon {
-  font-size: 18px;
-  font-weight: 300;
-  transition: transform 0.3s;
-  opacity: 0.6;
-}
-.jg-accordion-item.open .jg-accordion-icon { transform: rotate(45deg); }
-.jg-accordion-body {
-  display: none;
-  padding-bottom: 16px;
-  font-family: var(--font-body--family);
-  font-size: 13px;
-  line-height: 1.7;
-  opacity: 0.7;
-}
-.jg-accordion-item.open .jg-accordion-body { display: block; }
-.jg-accordion-body ul { padding-left: 16px; }
-.jg-accordion-body li { margin-bottom: 4px; }
-
-/* ── Collection Page ─────────────────────────────────────── */
-
-/* Collection hero banner text */
-.collection-hero h1,
-.collection-hero__title {
-  font-family: var(--font-primary--family) !important;
-  font-size: 56px !important;
-  font-weight: 300 !important;
-  color: var(--jg-off-white) !important;
-}
-
-/* Filter bar */
-.facets-container,
-[class*="facets"],
-[class*="filter"] {
-  background-color: var(--jg-black) !important;
-  border-color: var(--jg-border) !important;
-}
-
-/* Filter labels */
-.facets__label,
-.facets__summary,
-[class*="facets"] label,
-[class*="filter"] label {
-  font-family: var(--font-body--family) !important;
-  font-size: 11px !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  color: var(--jg-off-white) !important;
-}
-
-/* Active filter chip */
-.active-facets__button,
-[class*="active-facet"] {
-  background: rgba(184,151,90,0.1) !important;
-  border-color: var(--jg-gold) !important;
-  color: var(--jg-gold) !important;
-  border-radius: 0 !important;
-}
-
-/* Sort dropdown */
-.collection__sort,
-.sort-by,
-[class*="sort"] select {
-  background-color: var(--jg-card-bg) !important;
-  color: var(--jg-off-white) !important;
-  border-color: var(--jg-border) !important;
-  font-family: var(--font-body--family) !important;
-}
-
-/* ── Homepage Sections ───────────────────────────────────── */
-
-/* Hero section */
-.hero-section,
-[class*="hero"],
-.section--hero {
-  background-color: var(--jg-black) !important;
-}
-
-/* Category grid cards */
-.category-card,
-.collection-list-card,
-[class*="category"] .card {
-  border-radius: 0 !important;
-  overflow: hidden;
-}
-.category-card:hover img,
-.collection-list-card:hover img {
-  transform: scale(1.04);
-  transition: transform 0.5s ease;
-}
-
-/* Marquee / scrolling bar */
-.marquee,
-[class*="marquee"] {
-  background-color: var(--jg-card-bg) !important;
-  border-top: 1px solid var(--jg-border) !important;
-  border-bottom: 1px solid var(--jg-border) !important;
-}
-.marquee__item,
-[class*="marquee"] span,
-[class*="marquee"] p {
-  font-family: var(--font-body--family) !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.2em !important;
-  text-transform: uppercase !important;
-  color: var(--jg-off-white) !important;
-}
-
-/* Trust bar */
-.trust-bar,
-[class*="trust-bar"] {
-  background-color: var(--jg-card-bg) !important;
-  border-top: 1px solid var(--jg-border) !important;
-  border-bottom: 1px solid var(--jg-border) !important;
-}
-
-/* Testimonials */
-.testimonial-card,
-[class*="testimonial"] .card {
-  background-color: var(--jg-card-bg) !important;
-  border-color: var(--jg-border) !important;
-  border-radius: 0 !important;
-}
-.testimonial-card blockquote,
-[class*="testimonial"] q,
-[class*="testimonial"] p {
-  font-family: var(--font-primary--family) !important;
-  font-size: 18px !important;
-  font-style: italic !important;
-  line-height: 1.65 !important;
-}
-
-/* Newsletter / email signup */
-.newsletter-section,
-[class*="email-signup"] {
-  background-color: var(--jg-card-bg) !important;
-}
-
-/* ── Footer ─────────────────────────────────────────────── */
-footer,
-.site-footer,
-.footer {
-  background-color: #060606 !important;
-  border-top: 1px solid var(--jg-border) !important;
-}
-.footer__heading,
-[class*="footer"] h3,
-[class*="footer"] h4 {
-  font-family: var(--font-body--family) !important;
-  font-size: 10px !important;
-  letter-spacing: 0.25em !important;
-  text-transform: uppercase !important;
-  color: var(--jg-gold) !important;
-}
-.footer__link,
-[class*="footer"] a {
-  font-family: var(--font-body--family) !important;
-  font-size: 13px !important;
-  color: var(--jg-off-white) !important;
-  opacity: 0.4;
-  text-decoration: none !important;
-  transition: opacity 0.2s !important;
-}
-.footer__link:hover,
-[class*="footer"] a:hover { opacity: 1 !important; }
-.footer__copyright,
-[class*="footer__copy"] {
-  font-size: 11px !important;
-  opacity: 0.25 !important;
-}
-
-/* Logo in footer: invert to white */
-.footer img[src*="logo"],
-.footer .footer-logo {
-  filter: invert(1) !important;
-}
-
-/* ── Cart Drawer ─────────────────────────────────────────── */
-.cart-drawer,
-[class*="cart-drawer"] {
-  background-color: var(--jg-black) !important;
-  border-left: 1px solid var(--jg-border) !important;
-}
-.cart-drawer__title,
-[class*="cart-header"] h2 {
-  font-family: var(--font-primary--family) !important;
-  font-size: 28px !important;
-  font-weight: 300 !important;
-  color: var(--jg-off-white) !important;
-}
-.cart-item,
-[class*="cart-item"] {
-  border-bottom: 1px solid var(--jg-border) !important;
-}
-.cart-item__name,
-[class*="cart-item"] .product-name {
-  font-family: var(--font-body--family) !important;
-  font-size: 13px !important;
-  color: var(--jg-off-white) !important;
-}
-.cart-item__price,
-[class*="cart-item"] .price {
-  font-family: var(--font-primary--family) !important;
-  color: var(--jg-gold) !important;
-  font-size: 16px !important;
-}
-
-/* Cart checkout button */
-.cart__checkout-button,
-[class*="cart"] .button--checkout {
-  background-color: var(--jg-gold) !important;
-  color: var(--jg-black) !important;
-  border-color: var(--jg-gold) !important;
-  font-family: var(--font-body--family) !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  border-radius: 0 !important;
-}
-
-/* ── Modals / Drawers / Overlays ───────────────────────── */
-.modal,
-[class*="modal"],
-.drawer,
-[class*="drawer"],
-.overlay-panel {
-  background-color: var(--jg-black) !important;
-  color: var(--jg-off-white) !important;
-}
-
-/* ── Pagination ─────────────────────────────────────────── */
-.pagination a,
-[class*="pagination"] a {
-  background: var(--jg-card-bg) !important;
-  color: var(--jg-off-white) !important;
-  border-color: var(--jg-border) !important;
-  border-radius: 0 !important;
-}
-.pagination .current,
-[class*="pagination"] .active {
-  background: var(--jg-gold) !important;
-  color: var(--jg-black) !important;
-  border-color: var(--jg-gold) !important;
-}
-
-/* ── Utility classes ─────────────────────────────────────── */
-.jg-gold  { color: var(--jg-gold) !important; }
-.jg-heading {
-  font-family: var(--font-primary--family) !important;
-  font-weight: 300 !important;
-}
-
-/* ── Horizon Theme Precise Overrides ────────────────────── */
-
-/* Save badge: gold instead of red */
-.save-badge {
-  background: rgba(184,151,90,0.15) !important;
-  color: var(--jg-gold) !important;
-  border: 1px solid rgba(184,151,90,0.35) !important;
-  border-radius: 0 !important;
-  font-size: 10px !important;
-  padding: 3px 8px !important;
-}
-
-/* Product card: dark background */
-.product-card {
-  background-color: var(--jg-card-bg) !important;
-}
-
-/* Product card: price in gold via Cormorant Garamond */
-.product-card .price,
-.product-card product-price {
-  font-family: var(--font-primary--family) !important;
-  color: var(--jg-gold) !important;
-  font-weight: 600 !important;
-}
-
-/* Card gallery image placeholder: dark */
-.card-gallery {
-  background-color: var(--jg-card-bg) !important;
-}
-
-/* Section heading labels (eyebrow text above section titles) */
-.section-label,
-.section__label,
-.eyebrow {
-  font-family: var(--font-body--family) !important;
-  font-size: 10px !important;
-  letter-spacing: 0.25em !important;
-  text-transform: uppercase !important;
-  color: var(--jg-gold) !important;
-  opacity: 1 !important;
-}
-
-/* Section headings in product list / collection */
-.product-list__heading,
-.collection-list__heading,
-section h2.heading {
-  font-family: var(--font-primary--family) !important;
-  font-weight: 300 !important;
-  color: var(--jg-off-white) !important;
-}
-
-/* "View all" link: gold */
-.product-list__view-all a,
-.section__view-all,
-a.link.animate-arrow {
-  color: var(--jg-gold) !important;
-  font-family: var(--font-body--family) !important;
-  font-size: 11px !important;
-  letter-spacing: 0.1em !important;
-}
-
-/* Facets / Filter horizontal bar */
-.facets-horizontal {
-  background: var(--jg-black) !important;
-  border-bottom: 1px solid var(--jg-border) !important;
-}
-
-/* Swatch outline: gold on selected */
-.variant-option--swatches input:checked + label,
-.variant-option--swatches .selected {
-  outline-color: var(--jg-gold) !important;
-  outline-offset: 2px !important;
-}
-
-/* Dropdown menus / mega nav */
-.mega-menu,
-.header__dropdown,
-.header-drawer {
-  background-color: rgba(10,10,10,0.98) !important;
-  border-color: var(--jg-border) !important;
-}
-
-/* Quantity input field in product page */
-.quantity__button,
-.quantity__input,
-.quantity {
-  background-color: var(--jg-card-bg) !important;
-  color: var(--jg-off-white) !important;
-  border-color: var(--jg-border) !important;
-  border-radius: 0 !important;
-}
-
-/* Add to cart button */
-.add-to-cart-button,
-button[name="add"],
-.product-form__submit {
-  background-color: var(--jg-gold) !important;
-  color: var(--jg-black) !important;
-  border: none !important;
-  border-radius: 0 !important;
-  font-family: var(--font-body--family) !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.2em !important;
-  text-transform: uppercase !important;
-  height: 48px !important;
-}
-button[name="add"]:hover,
-.product-form__submit:hover {
-  background-color: #c9a96a !important;
-}
-
-/* Quick add hover panel */
-.quick-add-component,
-.quick-add-modal,
-[class*="quick-add"] {
-  background-color: rgba(10,10,10,0.95) !important;
-  border-color: var(--jg-border) !important;
-  border-radius: 0 !important;
-}
-
-/* Product details section headings (accordions on PDP) */
-.product__details-summary,
-details.product__details summary {
-  font-family: var(--font-body--family) !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  color: var(--jg-off-white) !important;
-  border-color: var(--jg-border) !important;
-}
-
-/* Product page gallery thumbnails */
-.thumbnail-list__item--active .thumbnail,
-.thumbnail:hover {
-  border-color: var(--jg-gold) !important;
-}
-
-/* Breadcrumb */
-.breadcrumbs,
-.breadcrumbs a,
-.breadcrumb {
-  font-family: var(--font-body--family) !important;
-  font-size: 11px !important;
-  color: var(--jg-off-white) !important;
-  opacity: 0.4;
-}
-.breadcrumbs a:hover { opacity: 1; }
-
-/* ── Mobile Responsive ──────────────────────────────────── */
-@media (max-width: 768px) {
-  .product__title,
-  h1.product-title {
-    font-size: 34px !important;
-  }
-  .jg-add-row {
-    grid-template-columns: 90px 1fr;
-  }
-  .jg-trust-badges {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .jg-trust-badge:nth-child(2) { border-right: none; }
-  .jg-trust-badge:nth-child(3) { border-right: 1px solid var(--jg-border); }
+/* ── Mobile ─────────────────────────────────────────────── */
+@media (max-width: 749px) {
   .jg-compare-box {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
   }
-  .jg-compare-now { font-size: 26px !important; }
-  .collection-hero h1,
-  .collection-hero__title {
-    font-size: 36px !important;
-  }
+  .jg-compare-now { font-size: 26px; }
+  .jg-trust-badges { grid-template-columns: repeat(2, 1fr); }
+  .jg-trust-badge:nth-child(2) { border-right: none; }
+  .jg-trust-badge:nth-child(3) { border-right: 1px solid var(--jg-border); }
 }
