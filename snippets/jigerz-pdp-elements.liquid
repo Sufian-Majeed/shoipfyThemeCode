@@ -1,0 +1,45 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign has_sale = false
+  if product.compare_at_price > product.price
+    assign has_sale = true
+    assign savings = product.compare_at_price | minus: product.price
+    assign savings_percent = savings | times: 100 | divided_by: product.compare_at_price | round
+  endif
+-%}
+
+{%- comment -%} Compare Price Box {%- endcomment -%}
+{%- if has_sale -%}
+<div class="jg-compare-box">
+  <div>
+    <div class="jg-compare-label">Compare at Price</div>
+    <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
+      <span class="jg-compare-now">{{ product.price | money }}</span>
+      <span class="jg-compare-was">{{ product.compare_at_price | money }}</span>
+    </div>
+  </div>
+  <span class="jg-save-pill">SAVE {{ savings_percent }}%</span>
+</div>
+{%- endif -%}
+
+{%- comment -%} Stock Indicator {%- endcomment -%}
+{%- if current_variant.inventory_management == 'shopify' and current_variant.inventory_quantity > 0 and current_variant.inventory_quantity <= 10 -%}
+<div class="jg-stock">
+  <div class="jg-stock-dot"></div>
+  <span class="jg-stock-text">Only {{ current_variant.inventory_quantity }} pieces left!</span>
+  <span class="jg-stock-sub">— Order soon</span>
+</div>
+{%- endif -%}
+
+{%- comment -%} Product Bullets {%- endcomment -%}
+<div class="jg-bullets">
+  <div class="jg-bullet"><span class="jg-bullet-check">✓</span> Premium Imported Fabric — 100% Ring-Spun Cotton</div>
+  <div class="jg-bullet"><span class="jg-bullet-check">✓</span> Stretchable &amp; Breathable — Perfect for Summer</div>
+  <div class="jg-bullet"><span class="jg-bullet-check">✓</span> Smart Fit Design — Modern Relaxed Silhouette</div>
+</div>
+
+{%- comment -%} Delivery Line {%- endcomment -%}
+<div class="jg-delivery">
+  <span>🚚</span>
+  <span>Order now &amp; get delivery in <strong>3–5 business days</strong> · Free on orders PKR 2,500+</span>
+</div>
