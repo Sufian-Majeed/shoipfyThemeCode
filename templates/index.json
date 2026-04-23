@@ -49,34 +49,98 @@
     "marquee_DcMxUN": {
       "type": "marquee",
       "blocks": {
-        "text_tYUjpX": {
+        "text_m1": {
           "type": "text",
           "settings": {
-            "text": "<p>Fresh Collection Live Now - Limited Stock - Grab Your Favorite Outfit Today</p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
+            "text": "Premium Imported Fabric",
             "type_preset": "custom",
             "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "tight",
-            "letter_spacing": "tight",
+            "font_size": "var(--font-size--base)",
+            "line_height": "normal",
+            "letter_spacing": "normal",
             "case": "none",
             "wrap": "nowrap",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "width": "fit-content"
+          }
+        },
+        "text_m2": {
+          "type": "text",
+          "settings": {
+            "text": "✦ Summer 2026",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "var(--font-size--base)",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "nowrap",
+            "width": "fit-content"
+          }
+        },
+        "text_m3": {
+          "type": "text",
+          "settings": {
+            "text": "✦ Free Delivery above Rs.2,500",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "var(--font-size--base)",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "nowrap",
+            "width": "fit-content"
+          }
+        },
+        "text_m4": {
+          "type": "text",
+          "settings": {
+            "text": "✦ Cash On Delivery Available",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "var(--font-size--base)",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "nowrap",
+            "width": "fit-content"
+          }
+        },
+        "text_m5": {
+          "type": "text",
+          "settings": {
+            "text": "✦ JIGERZ — Not Just A Brand",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "var(--font-size--base)",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "nowrap",
+            "width": "fit-content"
+          }
+        },
+        "text_m6": {
+          "type": "text",
+          "settings": {
+            "text": "✦ 30-Day Easy Returns",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "var(--font-size--base)",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "nowrap",
+            "width": "fit-content"
+          }
         }
       },
       "block_order": [
-        "text_tYUjpX"
+        "text_m1",
+        "text_m2",
+        "text_m3",
+        "text_m4",
+        "text_m5",
+        "text_m6"
       ],
       "name": "t:names.marquee_section",
       "settings": {
@@ -84,7 +148,7 @@
         "color_scheme": "scheme-5",
         "padding-block-start": 16,
         "padding-block-end": 16,
-        "gap_between_elements": 100
+        "gap_between_elements": 48
       }
     },
     "product_list_xtytcc": {
@@ -328,7 +392,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h3>Our Collections</h3>",
+                "text": "<h2>Shop By Category</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1005,7 +1069,7 @@
         "equal_columns": true,
         "limit_details_width": false,
         "gap": 20,
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "padding-block-start": 40,
         "padding-block-end": 40
       }
@@ -1298,7 +1362,7 @@
                 "text_8jqYaw": {
                   "type": "text",
                   "settings": {
-                    "text": "<h4>Fast Delivery</h4>",
+                    "text": "<h4>Free Delivery</h4>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1323,7 +1387,7 @@
                 "text_EG4GJE": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Delivered to your doorstep</p>",
+                    "text": "<p>On orders above Rs. 2,500</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1448,7 +1512,7 @@
                 "text_rtmp7p": {
                   "type": "text",
                   "settings": {
-                    "text": "<h2>Secure Checkout</h2>",
+                    "text": "<h4>Cash on Delivery</h4>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1473,7 +1537,7 @@
                 "text_RhNTDx": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>100% safe & protected</p>",
+                    "text": "<p>Available nationwide</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1598,7 +1662,7 @@
                 "text_aQ3bgF": {
                   "type": "text",
                   "settings": {
-                    "text": "<h2>Easy Returns</h2>",
+                    "text": "<h4>30-Day Returns</h4>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1623,7 +1687,7 @@
                 "text_YbeKPB": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Quick & Easy Return Policy</p>",
+                    "text": "<p>Hassle-free return policy</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1656,18 +1720,169 @@
             "icon_YmkP4Y",
             "group_JmEMz3"
           ]
+        },
+        "group_quality4": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 16,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "icon_quality": {
+              "type": "icon",
+              "settings": {
+                "icon": "checkmark",
+                "width": 32,
+                "link": "",
+                "open_in_new_tab": false
+              },
+              "blocks": {}
+            },
+            "group_quality": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 4,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_q1": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h4>Genuine Quality</h4>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "h3",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_q2": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Premium imported fabric</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "center",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_q1",
+                "text_q2"
+              ]
+            }
+          },
+          "block_order": [
+            "icon_quality",
+            "group_quality"
+          ]
         }
       },
       "block_order": [
         "group_a6dJRh",
         "group_BPExCW",
-        "group_C9Y6Qz"
+        "group_C9Y6Qz",
+        "group_quality4"
       ],
       "name": "t:names.icons_with_text",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
+        "horizontal_alignment": "space-between",
         "vertical_alignment": "center",
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
@@ -1716,11 +1931,11 @@
             "arrows_position": "sides",
             "max_width": 1100,
             "corner_styling": "soft",
-            "header_text_color": "#000000",
-            "text_color": "#000000",
-            "card_color": "#f9f9f9",
-            "stars_color": "",
-            "arrows_color": "#000000",
+            "header_text_color": "#f5f4f0",
+            "text_color": "#f5f4f0",
+            "card_color": "#141414",
+            "stars_color": "#b8975a",
+            "arrows_color": "#b8975a",
             "transition_speed": 5,
             "header_text": "Customers are saying",
             "show_average_rating": true
@@ -1797,7 +2012,7 @@
             "heading_preset": "h3",
             "border_style": "all",
             "border_width": 1,
-            "border_radius": 100,
+            "border_radius": 0,
             "input_type_preset": "paragraph",
             "style_class": "button-unstyled",
             "display_type": "arrow",
