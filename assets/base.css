@@ -4944,36 +4944,6 @@ product-recommendations:has([data-has-recommendations='false']) {
     translate: 0px var(--atc-destination, 0px);
   }
 }
-/* Auto Attention Animation for Add to Cart */
-.add-to-cart-button {
-  position: relative;
-  animation: cartPulse 2s infinite;
-  transition: all 0.3s ease;
-}
-
-/* Hover still works */
-.add-to-cart-button:hover {
-  animation: none;
-  transform: scale(1.05);
-}
-
-/* Pulse Animation */
-@keyframes cartPulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0,0,0,0.4);
-  }
-
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 10px rgba(0,0,0,0);
-  }
-
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0,0,0,0);
-  }
-}
 
 .compare-at-price{
     text-decoration: line-through;
@@ -5033,9 +5003,3 @@ font-size: 18px;
   .hero .desktop\:hidden { display: none !important; }
 }
 
-/* Premium benefit bullets on product page */
-.product-information__blocks [data-block-type="text"]:has(.benefit-bullets),
-.product-information [data-type="text"] p:has(✔️),
-.product-information [data-type="text"] p:has(🚚) {
-  line-height: 1.8;
-}
