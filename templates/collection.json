@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "section": {
@@ -87,89 +96,6 @@
         "gradient_direction": "to top",
         "padding-block-start": 40,
         "padding-block-end": 24
-      }
-    },
-    "marquee_collection": {
-      "type": "marquee",
-      "blocks": {
-        "text_m1": {
-          "type": "text",
-          "settings": {
-            "text": "🚚 Free Delivery above Rs.2,500",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "var(--font-size--base)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "nowrap",
-            "width": "fit-content"
-          }
-        },
-        "text_m2": {
-          "type": "text",
-          "settings": {
-            "text": "💰 Cash on Delivery Available",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "var(--font-size--base)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "nowrap",
-            "width": "fit-content"
-          }
-        },
-        "text_m3": {
-          "type": "text",
-          "settings": {
-            "text": "⚡ Limited Stock — Order Now",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "var(--font-size--base)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "nowrap",
-            "width": "fit-content"
-          }
-        },
-        "text_m4": {
-          "type": "text",
-          "settings": {
-            "text": "✅ Easy Returns — Hassle Free",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "var(--font-size--base)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "nowrap",
-            "width": "fit-content"
-          }
-        },
-        "text_m5": {
-          "type": "text",
-          "settings": {
-            "text": "🔥 Premium Imported Fabric",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "var(--font-size--base)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "nowrap",
-            "width": "fit-content"
-          }
-        }
-      },
-      "block_order": ["text_m1", "text_m2", "text_m3", "text_m4", "text_m5"],
-      "settings": {
-        "movement_direction": "reverse",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 10,
-        "padding-block-end": 10,
-        "gap_between_elements": 40
       }
     },
     "main": {
@@ -279,7 +205,16 @@
             },
             "swatches_card": {
               "type": "swatches",
-              "settings": {}
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -424,7 +359,6 @@
   },
   "order": [
     "section",
-    "marquee_collection",
     "main",
     "section_94KQcC"
   ]
