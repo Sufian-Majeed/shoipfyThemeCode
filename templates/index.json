@@ -34,7 +34,7 @@
             "autoplay_speed": 5,
             "slide_1_enabled": true,
             "slide_1_desktop_image": "shopify://shop_images/jigerz_facebook_ad.webp",
-            "slide_1_mobile_image": "shopify://shop_images/Main_Banner_Mobile.webp",
+            "slide_1_mobile_image": "shopify://shop_images/jigerz_mobile_banner.webp",
             "slide_1_collection": "jigerz-special",
             "slide_2_enabled": true,
             "slide_2_desktop_image": "shopify://shop_images/main_banner_2.webp",
