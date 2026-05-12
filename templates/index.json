@@ -696,7 +696,7 @@
           "static": true,
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/web_banner_square_1.webp",
+            "image": "shopify://shop_images/jigerz_puffer_ad.webp",
             "link": "",
             "video_loop": true,
             "video_autoplay": false,
