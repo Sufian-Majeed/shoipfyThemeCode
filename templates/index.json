@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "1773489637146dab4f": {
@@ -24,7 +33,7 @@
             "autoplay": true,
             "autoplay_speed": 5,
             "slide_1_enabled": true,
-            "slide_1_desktop_image": "shopify://shop_images/main_banner.webp",
+            "slide_1_desktop_image": "shopify://shop_images/jigerz_facebook_ad.webp",
             "slide_1_mobile_image": "shopify://shop_images/Main_Banner_Mobile.webp",
             "slide_1_collection": "jigerz-special",
             "slide_2_enabled": true,
