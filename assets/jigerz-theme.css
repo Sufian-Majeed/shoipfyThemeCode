@@ -316,17 +316,76 @@ p, span, a, li, label, input, select, textarea, button,
   overflow: visible !important;
 }
 
+/* ──────────────────────────────────────────────────────────
+   GOLD ACCENTS — interactive elements across the theme
+   ────────────────────────────────────────────────────────── */
+
+/* ── Input / textarea / select — gold focus ring ────────── */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.field__input:focus-visible,
+.search__input:focus-visible {
+  outline-color: var(--jg-gold) !important;
+  border-color: var(--jg-gold) !important;
+}
+
+/* ── Quantity selector +/- — gold hover ─────────────────── */
+.quantity-selector :is(.quantity-minus, .quantity-plus):hover {
+  color: var(--jg-gold) !important;
+}
+
+/* ── Pagination — gold current page ─────────────────────── */
+.pagination__link[aria-current='page'] {
+  color: var(--jg-gold) !important;
+  font-weight: 700 !important;
+}
+.pagination__link[aria-current='page']::before {
+  background: rgba(184,134,11,0.12) !important;
+}
+.pagination__link:not([aria-current='page'], .pagination__link--gap, .pagination__link--disabled):hover {
+  color: var(--jg-gold) !important;
+}
+.pagination__link:not([aria-current='page'], .pagination__link--gap, .pagination__link--disabled):hover::before {
+  background: rgba(184,134,11,0.08) !important;
+}
+
+/* ── Save badge — ensure gold, never red ────────────────── */
+.save-badge,
+.save-badge--small {
+  background: var(--jg-gold-light) !important;
+  color: var(--jg-gold) !important;
+  border: 1px solid var(--jg-gold-border) !important;
+}
+
+/* ── Product badge (SALE tag on collection cards) ────────── */
+.badge[class*="sale"],
+.badge--sale,
+.product-badge--sale {
+  background: var(--jg-gold) !important;
+  color: #111111 !important;
+}
+
+/* ── RTE links (product description, blog) — gold hover ─── */
+.rte a:hover,
+.rte-content a:hover {
+  color: var(--jg-gold) !important;
+}
+
+/* ── Close button hover — gold ───────────────────────────── */
+.close-button:hover,
+.modal__close-button:hover,
+.drawer__close:hover {
+  color: var(--jg-gold) !important;
+}
+
+/* ── Swatch selected border — gold ring for light schemes ── */
+.variant-option__button-label--has-swatch:has(:checked) {
+  outline-color: var(--jg-gold) !important;
+}
+
 /* ── Mobile ─────────────────────────────────────────────── */
 @media (max-width: 749px) {
-  .jg-compare-box {
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 14px;
-  }
-  .jg-compare-now {
-    font-size: 20px;
-  }
   .jg-trust-badges {
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: 24px;
