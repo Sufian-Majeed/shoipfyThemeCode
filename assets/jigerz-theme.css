@@ -243,9 +243,7 @@ p, span, a, li, label, input, select, textarea, button,
   border-radius: 4px;
   overflow: hidden;
   margin-top: 16px;
-  margin-bottom: 8px;
-  position: relative;
-  z-index: 1;
+  margin-bottom: 24px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -331,7 +329,7 @@ p, span, a, li, label, input, select, textarea, button,
   }
   .jg-trust-badges {
     grid-template-columns: repeat(2, 1fr);
-    margin-bottom: 0;
+    margin-bottom: 24px;
   }
   .jg-trust-badge:nth-child(2) {
     border-right: none;
