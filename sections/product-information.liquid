@@ -167,9 +167,11 @@
   </sticky-add-to-cart>
 {% endif %}
 
-{% capture jigerz_elements %}
-  {{ product_details }}
+{% capture jigerz_before %}
   {% render 'jigerz-pdp-elements', product: closest.product %}
+{% endcapture %}
+
+{% capture jigerz_after %}
   {% render 'jigerz-trust-badges' %}
 {% endcapture %}
 
@@ -178,8 +180,10 @@
   section_id: section.id,
   settings: section.settings,
   media_gallery: media_gallery,
-  product_details: jigerz_elements,
-  additional_blocks: additional_blocks
+  product_details: product_details,
+  additional_blocks: additional_blocks,
+  jigerz_before: jigerz_before,
+  jigerz_after: jigerz_after
 %}
 
 {% stylesheet %}

@@ -175,6 +175,8 @@ p, span, a, li, label, input, select, textarea, button,
   margin-bottom: 16px;
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
+  overflow: hidden;
+  flex-wrap: wrap;
 }
 .jg-stock-dot {
   width: 7px;
@@ -267,6 +269,14 @@ p, span, a, li, label, input, select, textarea, button,
   text-transform: uppercase;
   opacity: 0.55;
   line-height: 1.4;
+}
+
+/* ── jigerz-before / jigerz-after wrappers ─────────────── */
+.jigerz-before,
+.jigerz-after {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* ── Mobile ─────────────────────────────────────────────── */
