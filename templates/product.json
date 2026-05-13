@@ -192,6 +192,15 @@
               },
               "blocks": {}
             },
+            "benefit_bullets": {
+              "type": "benefit-bullets",
+              "settings": {
+                "bullet_1": "Premium Imported Fabric",
+                "bullet_2": "Stretchable & Breathable",
+                "bullet_3": "Smart Slim Fit Look"
+              },
+              "blocks": {}
+            },
             "variant_picker_PdCMcW": {
               "type": "variant-picker",
               "name": "t:names.product_variant_picker",
@@ -266,6 +275,14 @@
               },
               "blocks": {}
             },
+            "delivery_estimate": {
+              "type": "delivery-estimate",
+              "settings": {
+                "min_days": 3,
+                "max_days": 5
+              },
+              "blocks": {}
+            },
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
               "settings": {
@@ -300,6 +317,11 @@
                 }
               },
               "block_order": []
+            },
+            "cod_badge_main": {
+              "type": "cod-badge",
+              "settings": {},
+              "blocks": {}
             },
             "payment_icons_trust": {
               "type": "payment-icons",
@@ -354,6 +376,45 @@
                 "padding-inline-end": 0
               },
               "blocks": {
+                "faq_row_description": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Product Description",
+                    "open_by_default": false,
+                    "icon": "clipboard",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "faq_text_description": {
+                      "type": "text",
+                      "settings": {
+                        "text": "{{ product.description }}",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "paragraph",
+                        "font": "var(--font-body--family)",
+                        "font_size": "",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "faq_text_description"
+                  ]
+                },
                 "faq_row_shipping": {
                   "type": "_accordion-row",
                   "settings": {
@@ -470,45 +531,6 @@
                   "block_order": [
                     "faq_text_care"
                   ]
-                },
-                "faq_row_description": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Product Description",
-                    "open_by_default": false,
-                    "icon": "clipboard",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "faq_text_description": {
-                      "type": "text",
-                      "settings": {
-                        "text": "{{ product.description }}",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "paragraph",
-                        "font": "var(--font-body--family)",
-                        "font_size": "",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "faq_text_description"
-                  ]
                 }
               },
               "block_order": [
@@ -517,25 +539,6 @@
                 "faq_row_returns",
                 "faq_row_care"
               ]
-            },
-            "benefit_bullets": {
-              "type": "benefit-bullets",
-              "settings": {
-                "bullet_1": "Premium Imported Fabric",
-                "bullet_2": "Stretchable & Breathable",
-                "bullet_3": "Smart Slim Fit Look"
-              }
-            },
-            "delivery_estimate": {
-              "type": "delivery-estimate",
-              "settings": {
-                "min_days": 3,
-                "max_days": 5
-              }
-            },
-            "cod_badge_main": {
-              "type": "cod-badge",
-              "settings": {}
             }
           },
           "block_order": [
@@ -741,118 +744,46 @@
         "padding-block-end": 48
       }
     },
-    "section_pWJVRw": {
-      "type": "section",
+    "jigerz_newsletter_t7Fref": {
+      "type": "jigerz-newsletter",
       "blocks": {
-        "text_NeEJPk": {
-          "type": "text",
-          "name": "t:names.heading",
+        "perk_BaDPPh": {
+          "type": "perk",
           "settings": {
-            "text": "<h2>Subscribe to our emails</h2>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "text": "10% off first order"
+          }
         },
-        "text_rQxQU9": {
-          "type": "text",
+        "perk_NF3yAA": {
+          "type": "perk",
           "settings": {
-            "text": "<p>Be the first to know about new collections and special offers. </p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "paragraph",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "text": "Early access to drops"
+          }
         },
-        "email_signup_xRcxRG": {
-          "type": "email-signup",
+        "perk_CPm7cA": {
+          "type": "perk",
           "settings": {
-            "width": "custom",
-            "custom_width": 50,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "heading": "",
-            "heading_preset": "h3",
-            "border_style": "all",
-            "border_width": 1,
-            "border_radius": 100,
-            "input_type_preset": "paragraph",
-            "style_class": "button-unstyled",
-            "display_type": "arrow",
-            "label": "Sign up",
-            "integrated_button": true,
-            "button_type_preset": "paragraph",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "text": "No spam, unsubscribe anytime"
+          }
         }
       },
       "block_order": [
-        "text_NeEJPk",
-        "text_rQxQU9",
-        "email_signup_xRcxRG"
+        "perk_BaDPPh",
+        "perk_NF3yAA",
+        "perk_CPm7cA"
       ],
-      "name": "t:names.email_signup",
+      "name": "JIGERZ Newsletter",
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-2",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "gold_color": "#B8860B",
+        "gold_hover": "#C89B3C",
+        "bg_color": "#111111",
+        "text_color": "#F4EDE3",
+        "badge_text": "Members Only",
+        "badge_extra": "get 10% off",
+        "headline_main": "Be first to the",
+        "headline_accent": "drop.",
+        "subheading": "Join 12,000+ members for early access to new collections, private sales, and styling guides — straight to your inbox.",
+        "input_placeholder": "Enter your email address",
+        "button_text": "Subscribe"
       }
     }
   },
@@ -860,6 +791,6 @@
     "main",
     "17751053401b559971",
     "product_recommendations_qggXJq",
-    "section_pWJVRw"
+    "jigerz_newsletter_t7Fref"
   ]
 }
