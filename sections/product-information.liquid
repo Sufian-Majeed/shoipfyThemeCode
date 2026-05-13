@@ -176,6 +176,9 @@
   additional_blocks: additional_blocks
 %}
 
+<template id="jigerz-pdp-before">
+  {% render 'jigerz-pdp-elements', product: closest.product %}
+</template>
 <template id="jigerz-pdp-after">
   {% render 'jigerz-trust-badges' %}
 </template>
@@ -185,7 +188,21 @@
     function injectJigerz() {
       var groupBlock = document.querySelector('.product-details .group-block');
       if (!groupBlock) return;
+
+      var beforeTpl = document.getElementById('jigerz-pdp-before');
       var afterTpl = document.getElementById('jigerz-pdp-after');
+
+      if (beforeTpl) {
+        var priceEl = groupBlock.querySelector('product-price, .price-wrapper, .price__container');
+        if (priceEl) {
+          var wrapper = document.createElement('div');
+          wrapper.appendChild(beforeTpl.content.cloneNode(true));
+          priceEl.insertAdjacentElement('afterend', wrapper);
+        } else {
+          groupBlock.prepend(beforeTpl.content.cloneNode(true));
+        }
+      }
+
       if (afterTpl) groupBlock.append(afterTpl.content.cloneNode(true));
     }
     if (document.readyState === 'loading') {
