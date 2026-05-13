@@ -176,25 +176,6 @@
   additional_blocks: additional_blocks
 %}
 
-<template id="jigerz-pdp-after">
-  {% render 'jigerz-trust-badges' %}
-</template>
-
-<script>
-  (function () {
-    function injectJigerz() {
-      var groupBlock = document.querySelector('.product-details .group-block');
-      if (!groupBlock) return;
-      var afterTpl = document.getElementById('jigerz-pdp-after');
-      if (afterTpl) groupBlock.append(afterTpl.content.cloneNode(true));
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', injectJigerz);
-    } else {
-      injectJigerz();
-    }
-  })();
-</script>
 
 {% stylesheet %}
   .sticky-add-to-cart__bar {
