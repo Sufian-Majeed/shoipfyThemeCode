@@ -369,6 +369,23 @@ select:focus-visible,
   background: rgba(184,134,11,0.08) !important;
 }
 
+/* ── Footer — gold headings + link/icon hover ────────────── */
+.menu__heading,
+.menu__heading span,
+.menu__heading__default,
+.menu__heading__accordion {
+  color: var(--jg-gold) !important;
+  letter-spacing: 0.06em;
+}
+
+.menu__item a:hover {
+  color: var(--jg-gold) !important;
+}
+
+.social-icons__icon-wrapper a:hover .social-icons__icon {
+  color: var(--jg-gold) !important;
+}
+
 /* ── Save badge — ensure gold, never red ────────────────── */
 .save-badge,
 .save-badge--small {
