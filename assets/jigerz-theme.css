@@ -1,76 +1,122 @@
 /* ============================================================
-   JIGERZ — Dark Luxury Design Override
-   Strategy: Use theme CSS variables (set via color schemes in
-   settings_data.json). Only add what the theme cannot do on
-   its own: font override, gold price, Jigerz-specific components.
+   JIGERZ — Premium Luxury Streetwear Design System
+   Brand: NOT JUST A BRAND, IT'S A BOND
+   Palette: Warm Beige + Pure Black + Luxury Gold
+   Strategy: Color schemes handle backgrounds/buttons/inputs.
+   This file handles: fonts, gold accents, Jigerz components.
    ============================================================ */
 
-/* ── 1. Design Tokens ───────────────────────────────────── */
+/* ── 1. Brand Tokens ────────────────────────────────────── */
 :root {
-  --jg-gold:      #b8975a;
-  --jg-card-bg:   #141414;
-  --jg-border:    rgba(255,255,255,0.08);
-  --jg-sale-red:  #e85d04;
-  --jg-cod-green: #4caf50;
-
-  /* Override theme font variables to use Google Fonts */
-  --font-primary--family: 'Cormorant Garamond', serif;
-  --font-body--family:    'Barlow', sans-serif;
+  --jg-gold:        #B8860B;
+  --jg-gold-metal:  #C89B3C;
+  --jg-gold-light:  rgba(200,155,60,0.15);
+  --jg-gold-border: rgba(200,155,60,0.3);
+  --jg-black:       #111111;
+  --jg-beige:       #F4EDE3;
+  --jg-cream:       #EFE5D7;
+  --jg-sale:        #c0392b;
+  --jg-success:     #2e7d52;
 }
 
-/* ── 2. Gold price on product cards ─────────────────────── */
-/* Theme renders price via --color-foreground which is off-white.
-   We want price to always be gold. */
+/* ── 2. Typography — Google Fonts override ──────────────── */
+/* Bebas Neue for all headings (h1-h4) */
+h1, h2, h3, h4,
+.h1, .h2, .h3, .h4,
+[class*="heading"],
+.section-header__heading,
+.product-card__title,
+.product__title {
+  font-family: 'Bebas Neue', 'Montserrat', sans-serif !important;
+  letter-spacing: 0.03em;
+}
+
+/* Poppins for body text */
+body,
+p, span, a, li, label, input, select, textarea, button,
+.price, .badge, .caption {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* ── 3. Gold price on product cards ─────────────────────── */
 .product-card product-price,
 .product-card .price,
-.price:not(.compare-at-price):not(.price--small) {
+.price__current,
+.price:not(.compare-at-price) {
   color: var(--jg-gold) !important;
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 600 !important;
 }
 
-/* ── 3. Save badge — gold not red ───────────────────────── */
+/* Compare at price — muted */
+.compare-at-price,
+.price__compare {
+  opacity: 0.45 !important;
+  font-weight: 400 !important;
+}
+
+/* ── 4. Save badge — gold not red ───────────────────────── */
 .save-badge {
-  background: rgba(184,151,90,0.15) !important;
+  background: var(--jg-gold-light) !important;
   color: var(--jg-gold) !important;
-  border: 1px solid rgba(184,151,90,0.3) !important;
-  border-radius: 0 !important;
+  border: 1px solid var(--jg-gold-border) !important;
 }
 
-/* ── 4. Sharp corners everywhere (luxury = no radius) ───── */
-.button, button,
-.field__input, input, select, textarea,
-.card, .product-card,
-.badge, .cart-drawer,
-.modal, .drawer,
-.variant-option__value {
-  border-radius: 0 !important;
+/* ── 5. Announcement bar — black + gold text ────────────── */
+.announcement-bar,
+.announcement-bar__message {
+  background: var(--jg-black) !important;
+  color: var(--jg-gold-metal) !important;
+}
+.announcement-bar a,
+.announcement-bar__message a {
+  color: var(--jg-gold-metal) !important;
 }
 
-/* ── 5. Section label / eyebrow → gold ──────────────────── */
+/* ── 6. Product card — premium minimal ──────────────────── */
+.product-card {
+  box-shadow: 0 2px 12px rgba(17,17,17,0.06) !important;
+  transition: box-shadow 0.25s ease, transform 0.25s ease !important;
+}
+.product-card:hover {
+  box-shadow: 0 6px 24px rgba(17,17,17,0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ── 7. Section label / eyebrow → gold uppercase ────────── */
 .section-label,
-.section__label {
+.section__label,
+[class*="eyebrow"],
+[class*="label--section"] {
   color: var(--jg-gold) !important;
-  font-family: 'Barlow', sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-size: 10px !important;
-  letter-spacing: 0.25em !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.22em !important;
   text-transform: uppercase !important;
 }
 
-/* ── 6. Judge.me stars → gold ───────────────────────────── */
+/* ── 8. Judge.me stars → gold ───────────────────────────── */
 .jdgm-star,
 .jdgm-prev-badge__stars,
-[class*="jdgm"] .jdgm-star { color: var(--jg-gold) !important; }
+[class*="jdgm"] .jdgm-star {
+  color: var(--jg-gold) !important;
+}
 
-/* ── 7. Thumbnail active border → gold ─────────────────── */
+/* ── 9. Thumbnail active border → gold ─────────────────── */
 .thumbnail-list__item--active .thumbnail {
-  border-color: var(--jg-gold) !important;
+  border-color: var(--jg-gold-metal) !important;
+}
+
+/* ── 10. Add to cart — gold hover glow ──────────────────── */
+.add-to-cart-button:hover,
+.product-form__submit:hover {
+  box-shadow: 0 4px 20px rgba(200,155,60,0.3) !important;
 }
 
 /* ──────────────────────────────────────────────────────────
    JIGERZ COMPONENT STYLES
-   These are new components that don't exist in the base theme.
-   No !important needed — pure CSS for custom elements.
+   Custom elements injected via jigerz-pdp-elements.liquid
    ────────────────────────────────────────────────────────── */
 
 /* ── Compare Price Box ──────────────────────────────────── */
@@ -80,42 +126,45 @@
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  background: rgba(184,151,90,0.08);
-  border: 1px solid rgba(184,151,90,0.25);
+  background: var(--jg-gold-light);
+  border: 1px solid var(--jg-gold-border);
   padding: 16px 20px;
   margin-bottom: 16px;
+  border-radius: 4px;
 }
 .jg-compare-label {
-  font-family: 'Barlow', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font-family: 'Poppins', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   opacity: 0.5;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 .jg-compare-now {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 32px;
-  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
   color: var(--jg-gold);
-  margin-right: 10px;
 }
 .jg-compare-was {
-  font-size: 15px;
+  font-size: 14px;
   text-decoration: line-through;
   opacity: 0.4;
+  margin-left: 8px;
 }
 .jg-save-pill {
   background: var(--jg-gold);
-  color: #0a0a0a;
-  padding: 5px 12px;
-  font-family: 'Barlow', sans-serif;
+  color: #111111;
+  padding: 5px 14px;
+  font-family: 'Poppins', sans-serif;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
   flex-shrink: 0;
+  border-radius: 2px;
 }
 
 /* ── Stock Indicator ────────────────────────────────────── */
@@ -124,23 +173,28 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 16px;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 12px;
 }
 .jg-stock-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--jg-sale-red);
+  background: var(--jg-sale);
   flex-shrink: 0;
-  animation: jg-pulse 1.5s ease-in-out infinite;
+  animation: jg-blink 1.6s ease-in-out infinite;
 }
-@keyframes jg-pulse {
+@keyframes jg-blink {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.25; }
+  50%       { opacity: 0.3; }
 }
-.jg-stock-text { color: var(--jg-sale-red); font-weight: 500; }
-.jg-stock-sub  { opacity: 0.4; }
+.jg-stock-text {
+  color: var(--jg-sale);
+  font-weight: 600;
+}
+.jg-stock-sub {
+  opacity: 0.45;
+}
 
 /* ── Product Bullets ────────────────────────────────────── */
 .jg-bullets {
@@ -153,32 +207,39 @@
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 12px;
   line-height: 1.5;
   opacity: 0.75;
 }
-.jg-bullet-check { color: var(--jg-gold); flex-shrink: 0; }
+.jg-bullet-check {
+  color: var(--jg-gold);
+  flex-shrink: 0;
+  font-weight: 700;
+}
 
 /* ── Delivery Line ──────────────────────────────────────── */
 .jg-delivery {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--jg-card-bg);
-  border: 1px solid var(--jg-border);
+  background: rgba(17,17,17,0.04);
+  border: 1px solid rgba(17,17,17,0.1);
   padding: 12px 16px;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 12px;
   opacity: 0.8;
   margin-bottom: 20px;
+  border-radius: 4px;
 }
 
 /* ── Trust Badges (PDP) ─────────────────────────────────── */
 .jg-trust-badges {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border: 1px solid var(--jg-border);
+  border: 1px solid rgba(17,17,17,0.1);
+  border-radius: 4px;
+  overflow: hidden;
   margin-top: 20px;
 }
 .jg-trust-badge {
@@ -187,16 +248,22 @@
   align-items: center;
   gap: 5px;
   padding: 14px 8px;
-  border-right: 1px solid var(--jg-border);
+  border-right: 1px solid rgba(17,17,17,0.1);
   text-align: center;
+  background: rgba(17,17,17,0.02);
 }
-.jg-trust-badge:last-child { border-right: none; }
-.jg-trust-icon { font-size: 17px; opacity: 0.65; }
+.jg-trust-badge:last-child {
+  border-right: none;
+}
+.jg-trust-icon {
+  font-size: 17px;
+  opacity: 0.6;
+}
 .jg-trust-text {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 9px;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   opacity: 0.55;
   line-height: 1.4;
@@ -209,8 +276,20 @@
     align-items: flex-start;
     gap: 10px;
   }
-  .jg-compare-now { font-size: 26px; }
-  .jg-trust-badges { grid-template-columns: repeat(2, 1fr); }
-  .jg-trust-badge:nth-child(2) { border-right: none; }
-  .jg-trust-badge:nth-child(3) { border-right: 1px solid var(--jg-border); }
+  .jg-compare-now {
+    font-size: 24px;
+  }
+  .jg-trust-badges {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .jg-trust-badge:nth-child(2) {
+    border-right: none;
+  }
+  .jg-trust-badge:nth-child(3) {
+    border-right: 1px solid rgba(17,17,17,0.1);
+    border-top: 1px solid rgba(17,17,17,0.1);
+  }
+  .jg-trust-badge:nth-child(4) {
+    border-top: 1px solid rgba(17,17,17,0.1);
+  }
 }
