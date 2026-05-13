@@ -167,24 +167,39 @@
   </sticky-add-to-cart>
 {% endif %}
 
-{% capture jigerz_before %}
-  {% render 'jigerz-pdp-elements', product: closest.product %}
-{% endcapture %}
-
-{% capture jigerz_after %}
-  {% render 'jigerz-trust-badges' %}
-{% endcapture %}
-
 {% render 'product-information-content',
   product_media_size: closest.product.media.size,
   section_id: section.id,
   settings: section.settings,
   media_gallery: media_gallery,
   product_details: product_details,
-  additional_blocks: additional_blocks,
-  jigerz_before: jigerz_before,
-  jigerz_after: jigerz_after
+  additional_blocks: additional_blocks
 %}
+
+<template id="jigerz-pdp-before">
+  {% render 'jigerz-pdp-elements', product: closest.product %}
+</template>
+<template id="jigerz-pdp-after">
+  {% render 'jigerz-trust-badges' %}
+</template>
+
+<script>
+  (function () {
+    function injectJigerz() {
+      var details = document.querySelector('.product-details');
+      if (!details) return;
+      var before = document.getElementById('jigerz-pdp-before');
+      var after = document.getElementById('jigerz-pdp-after');
+      if (before) details.prepend(before.content.cloneNode(true));
+      if (after) details.append(after.content.cloneNode(true));
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', injectJigerz);
+    } else {
+      injectJigerz();
+    }
+  })();
+</script>
 
 {% stylesheet %}
   .sticky-add-to-cart__bar {

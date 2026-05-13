@@ -104,13 +104,7 @@
       {% if block == 'media' and product_has_media %}
         {{ media }}
       {% elsif block == 'product-details' %}
-        {% if jigerz_before != blank %}
-          <div class="jigerz-before">{{ jigerz_before }}</div>
-        {% endif %}
         {{ product_details }}
-        {% if jigerz_after != blank %}
-          <div class="jigerz-after">{{ jigerz_after }}</div>
-        {% endif %}
       {% endif %}
     {% endfor %}
   </div>
