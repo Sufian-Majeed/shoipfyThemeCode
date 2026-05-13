@@ -271,6 +271,46 @@ p, span, a, li, label, input, select, textarea, button,
   line-height: 1.4;
 }
 
+/* ── Product description list items — gold checkmarks ───── */
+.product-details .rte ul,
+.product-details .rte-content ul,
+.group-block .rte ul,
+.group-block .rte-content ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.product-details .rte ul li,
+.product-details .rte-content ul li,
+.group-block .rte ul li,
+.group-block .rte-content ul li {
+  position: relative;
+  padding-left: 1.4em !important;
+  margin-bottom: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+}
+
+.product-details .rte ul li::before,
+.product-details .rte-content ul li::before,
+.group-block .rte ul li::before,
+.group-block .rte-content ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--jg-gold) !important;
+  font-weight: 700;
+}
+
+/* ── Delivery estimate — brand green → brand style ──────── */
+[class*="delivery-estimate"] {
+  background: rgba(184,134,11,0.07) !important;
+  border-color: rgba(184,134,11,0.2) !important;
+  color: #111111 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+
 /* ── Mobile ─────────────────────────────────────────────── */
 @media (max-width: 749px) {
   .jg-compare-box {
