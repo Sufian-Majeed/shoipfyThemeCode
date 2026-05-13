@@ -186,13 +186,29 @@
 <script>
   (function () {
     function injectJigerz() {
-      var details = document.querySelector('.product-details');
-      if (!details) return;
-      var before = document.getElementById('jigerz-pdp-before');
-      var after = document.getElementById('jigerz-pdp-after');
-      if (before) details.prepend(before.content.cloneNode(true));
-      if (after) details.append(after.content.cloneNode(true));
+      var groupBlock = document.querySelector('.product-details .group-block');
+      if (!groupBlock) return;
+
+      var beforeTpl = document.getElementById('jigerz-pdp-before');
+      var afterTpl = document.getElementById('jigerz-pdp-after');
+
+      if (beforeTpl) {
+        /* Insert compare box + stock + bullets + delivery after the price element */
+        var priceEl = groupBlock.querySelector('product-price, .price-wrapper, .price__container');
+        if (priceEl) {
+          var wrapper = document.createElement('div');
+          wrapper.appendChild(beforeTpl.content.cloneNode(true));
+          priceEl.insertAdjacentElement('afterend', wrapper);
+        } else {
+          groupBlock.prepend(beforeTpl.content.cloneNode(true));
+        }
+      }
+
+      if (afterTpl) {
+        groupBlock.append(afterTpl.content.cloneNode(true));
+      }
     }
+
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', injectJigerz);
     } else {
