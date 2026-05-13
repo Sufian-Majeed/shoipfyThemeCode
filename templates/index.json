@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "1773489637146dab4f": {
@@ -24,10 +33,10 @@
             "autoplay": true,
             "autoplay_speed": 5,
             "slide_1_enabled": true,
-            "slide_1_desktop_image": "shopify://shop_images/main_banner.webp",
-            "slide_1_mobile_image": "shopify://shop_images/Main_Banner_Mobile.webp",
+            "slide_1_desktop_image": "shopify://shop_images/jigerz_facebook_ad.webp",
+            "slide_1_mobile_image": "shopify://shop_images/jigerz_square_facebook_ad.webp",
             "slide_1_collection": "jigerz-special",
-            "slide_2_enabled": true,
+            "slide_2_enabled": false,
             "slide_2_desktop_image": "shopify://shop_images/main_banner_2.webp",
             "slide_2_mobile_image": "shopify://shop_images/Main_Banner_Mobile_2.webp",
             "slide_2_collection": "track-suits",
@@ -49,98 +58,34 @@
     "marquee_DcMxUN": {
       "type": "marquee",
       "blocks": {
-        "text_m1": {
+        "text_tYUjpX": {
           "type": "text",
           "settings": {
-            "text": "Premium Imported Fabric",
+            "text": "<p>Fresh Collection Live Now - Limited Stock - Grab Your Favorite Outfit Today</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
             "type_preset": "custom",
             "font": "var(--font-body--family)",
-            "font_size": "var(--font-size--base)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
+            "font_size": "1rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
             "case": "none",
             "wrap": "nowrap",
-            "width": "fit-content"
-          }
-        },
-        "text_m2": {
-          "type": "text",
-          "settings": {
-            "text": "✦ Summer 2026",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "var(--font-size--base)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "nowrap",
-            "width": "fit-content"
-          }
-        },
-        "text_m3": {
-          "type": "text",
-          "settings": {
-            "text": "✦ Free Delivery above Rs.2,500",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "var(--font-size--base)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "nowrap",
-            "width": "fit-content"
-          }
-        },
-        "text_m4": {
-          "type": "text",
-          "settings": {
-            "text": "✦ Cash On Delivery Available",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "var(--font-size--base)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "nowrap",
-            "width": "fit-content"
-          }
-        },
-        "text_m5": {
-          "type": "text",
-          "settings": {
-            "text": "✦ JIGERZ — Not Just A Brand",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "var(--font-size--base)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "nowrap",
-            "width": "fit-content"
-          }
-        },
-        "text_m6": {
-          "type": "text",
-          "settings": {
-            "text": "✦ 30-Day Easy Returns",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "var(--font-size--base)",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "nowrap",
-            "width": "fit-content"
-          }
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "text_m1",
-        "text_m2",
-        "text_m3",
-        "text_m4",
-        "text_m5",
-        "text_m6"
+        "text_tYUjpX"
       ],
       "name": "t:names.marquee_section",
       "settings": {
@@ -148,7 +93,7 @@
         "color_scheme": "scheme-5",
         "padding-block-start": 16,
         "padding-block-end": 16,
-        "gap_between_elements": 48
+        "gap_between_elements": 100
       }
     },
     "product_list_xtytcc": {
@@ -392,7 +337,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h2>Shop By Category</h2>",
+                "text": "<h3>Our Collections</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -517,12 +462,12 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Winter_Sale.webp",
+        "image_1": "shopify://shop_images/jigerz_winter_banner_1920x800_ed02bd01-1545-4e5b-967e-939b29d2813a.webp",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
         "custom_mobile_media": true,
         "media_type_1_mobile": "image",
-        "image_1_mobile": "shopify://shop_images/Winter_Clearance_Sale.webp",
+        "image_1_mobile": "shopify://shop_images/jigerz_winter_square_1080.webp",
         "media_type_2_mobile": "image",
         "link": "shopify://collections/winter-sale",
         "open_in_new_tab": false,
@@ -751,7 +696,7 @@
           "static": true,
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/web_banner_square_1.webp",
+            "image": "shopify://shop_images/jigerz_puffer_ad.webp",
             "link": "",
             "video_loop": true,
             "video_autoplay": false,
@@ -1069,7 +1014,7 @@
         "equal_columns": true,
         "limit_details_width": false,
         "gap": 20,
-        "color_scheme": "scheme-1",
+        "color_scheme": "",
         "padding-block-start": 40,
         "padding-block-end": 40
       }
@@ -1362,7 +1307,7 @@
                 "text_8jqYaw": {
                   "type": "text",
                   "settings": {
-                    "text": "<h4>Free Delivery</h4>",
+                    "text": "<h4>Fast Delivery</h4>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1387,7 +1332,7 @@
                 "text_EG4GJE": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>On orders above Rs. 2,500</p>",
+                    "text": "<p>Delivered to your doorstep</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1512,7 +1457,7 @@
                 "text_rtmp7p": {
                   "type": "text",
                   "settings": {
-                    "text": "<h4>Cash on Delivery</h4>",
+                    "text": "<h2>Secure Checkout</h2>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1537,7 +1482,7 @@
                 "text_RhNTDx": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Available nationwide</p>",
+                    "text": "<p>100% safe & protected</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1662,7 +1607,7 @@
                 "text_aQ3bgF": {
                   "type": "text",
                   "settings": {
-                    "text": "<h4>30-Day Returns</h4>",
+                    "text": "<h2>Easy Returns</h2>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1687,7 +1632,7 @@
                 "text_YbeKPB": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Hassle-free return policy</p>",
+                    "text": "<p>Quick & Easy Return Policy</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1720,169 +1665,18 @@
             "icon_YmkP4Y",
             "group_JmEMz3"
           ]
-        },
-        "group_quality4": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 16,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "icon_quality": {
-              "type": "icon",
-              "settings": {
-                "icon": "checkmark",
-                "width": 32,
-                "link": "",
-                "open_in_new_tab": false
-              },
-              "blocks": {}
-            },
-            "group_quality": {
-              "type": "group",
-              "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 4,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "link": "",
-                "open_in_new_tab": false,
-                "placeholder": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "text_q1": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<h4>Genuine Quality</h4>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "center",
-                    "type_preset": "h3",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "text_q2": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Premium imported fabric</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "center",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_q1",
-                "text_q2"
-              ]
-            }
-          },
-          "block_order": [
-            "icon_quality",
-            "group_quality"
-          ]
         }
       },
       "block_order": [
         "group_a6dJRh",
         "group_BPExCW",
-        "group_C9Y6Qz",
-        "group_quality4"
+        "group_C9Y6Qz"
       ],
       "name": "t:names.icons_with_text",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
+        "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
@@ -1931,11 +1725,11 @@
             "arrows_position": "sides",
             "max_width": 1100,
             "corner_styling": "soft",
-            "header_text_color": "#f5f4f0",
-            "text_color": "#f5f4f0",
-            "card_color": "#141414",
-            "stars_color": "#b8975a",
-            "arrows_color": "#b8975a",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
             "transition_speed": 5,
             "header_text": "Customers are saying",
             "show_average_rating": true
@@ -1948,34 +1742,117 @@
       "settings": {}
     },
     "section_xRRKEV": {
-      "type": "jigerz-newsletter",
+      "type": "section",
       "blocks": {
-        "perk_1": {
-          "type": "perk",
-          "settings": { "text": "10% off first order" }
+        "text_UXdxqr": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Subscribe to our emails</h2>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
-        "perk_2": {
-          "type": "perk",
-          "settings": { "text": "Early access to drops" }
+        "text_nyTamN": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and special offers. </p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "paragraph",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
-        "perk_3": {
-          "type": "perk",
-          "settings": { "text": "No spam, unsubscribe anytime" }
+        "email_signup_qWhEhU": {
+          "type": "email-signup",
+          "settings": {
+            "width": "custom",
+            "custom_width": 50,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "heading": "",
+            "heading_preset": "h3",
+            "border_style": "all",
+            "border_width": 1,
+            "border_radius": 100,
+            "input_type_preset": "paragraph",
+            "style_class": "button-unstyled",
+            "display_type": "arrow",
+            "label": "Sign up",
+            "integrated_button": true,
+            "button_type_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
-      "block_order": ["perk_1", "perk_2", "perk_3"],
+      "block_order": [
+        "text_UXdxqr",
+        "text_nyTamN",
+        "email_signup_qWhEhU"
+      ],
+      "name": "t:names.email_signup",
       "settings": {
-        "gold_color": "#B8860B",
-        "gold_hover": "#C89B3C",
-        "bg_color": "#111111",
-        "text_color": "#F4EDE3",
-        "badge_text": "Members Only",
-        "badge_extra": "get 10% off",
-        "headline_main": "Be first to the",
-        "headline_accent": "drop.",
-        "subheading": "Join our community for early access to new collections, private sales, and styling guides — straight to your inbox.",
-        "input_placeholder": "Enter your email address",
-        "button_text": "Subscribe"
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-2",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 40,
+        "padding-block-end": 40
       }
     }
   },
