@@ -114,7 +114,8 @@ p, span, a, li, label, input, select, textarea, button,
 .button.add-to-cart-button,
 button[name="add"],
 .product-form__buttons .button:not(.button-secondary),
-.sticky-add-to-cart__button {
+.sticky-add-to-cart__button,
+button.shopify-payment-button__button--unbranded {
   background-color: var(--jg-gold) !important;
   border-color: var(--jg-gold) !important;
   color: #111111 !important;
@@ -124,7 +125,8 @@ button[name="add"],
 .button.add-to-cart-button:hover,
 button[name="add"]:hover,
 .product-form__buttons .button:not(.button-secondary):hover,
-.sticky-add-to-cart__button:hover {
+.sticky-add-to-cart__button:hover,
+button.shopify-payment-button__button--unbranded:hover:not([disabled]) {
   background-color: var(--jg-gold-metal) !important;
   border-color: var(--jg-gold-metal) !important;
   color: #111111 !important;
