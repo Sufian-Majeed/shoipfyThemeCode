@@ -378,12 +378,21 @@ select:focus-visible,
   letter-spacing: 0.06em;
 }
 
+.footer-content h1,
+.footer-content h2,
+.footer-content h3,
+.footer-content h4 {
+  color: var(--jg-gold) !important;
+}
+
 .menu__item a:hover {
   color: var(--jg-gold) !important;
 }
 
+.social-icons__icon-wrapper a:hover svg,
 .social-icons__icon-wrapper a:hover .social-icons__icon {
   color: var(--jg-gold) !important;
+  fill: var(--jg-gold) !important;
 }
 
 /* ── Save badge — ensure gold, never red ────────────────── */
