@@ -1701,6 +1701,48 @@
         "padding-block-end": 48
       }
     },
+    "jigerz_newsletter_6ATc4F": {
+      "type": "jigerz-newsletter",
+      "blocks": {
+        "perk_dWRTJA": {
+          "type": "perk",
+          "settings": {
+            "text": "10% off first order"
+          }
+        },
+        "perk_UmLCNd": {
+          "type": "perk",
+          "settings": {
+            "text": "Early access to drops"
+          }
+        },
+        "perk_kgkYzX": {
+          "type": "perk",
+          "settings": {
+            "text": "No spam, unsubscribe anytime"
+          }
+        }
+      },
+      "block_order": [
+        "perk_dWRTJA",
+        "perk_UmLCNd",
+        "perk_kgkYzX"
+      ],
+      "name": "JIGERZ Newsletter",
+      "settings": {
+        "gold_color": "#B8860B",
+        "gold_hover": "#C89B3C",
+        "bg_color": "#111111",
+        "text_color": "#F4EDE3",
+        "badge_text": "Members Only",
+        "badge_extra": "get 10% off",
+        "headline_main": "Be first to the",
+        "headline_accent": "drop.",
+        "subheading": "Join 12,000+ members for early access to new collections, private sales, and styling guides — straight to your inbox.",
+        "input_placeholder": "Enter your email address",
+        "button_text": "Subscribe"
+      }
+    },
     "1773363848a0164657": {
       "type": "_blocks",
       "blocks": {
@@ -1740,120 +1782,6 @@
         "judge_me_reviews_cards_carousel_AVNkG4"
       ],
       "settings": {}
-    },
-    "section_xRRKEV": {
-      "type": "section",
-      "blocks": {
-        "text_UXdxqr": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>Subscribe to our emails</h2>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_nyTamN": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Be the first to know about new collections and special offers. </p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "paragraph",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "email_signup_qWhEhU": {
-          "type": "email-signup",
-          "settings": {
-            "width": "custom",
-            "custom_width": 50,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "heading": "",
-            "heading_preset": "h3",
-            "border_style": "all",
-            "border_width": 1,
-            "border_radius": 100,
-            "input_type_preset": "paragraph",
-            "style_class": "button-unstyled",
-            "display_type": "arrow",
-            "label": "Sign up",
-            "integrated_button": true,
-            "button_type_preset": "paragraph",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_UXdxqr",
-        "text_nyTamN",
-        "email_signup_qWhEhU"
-      ],
-      "name": "t:names.email_signup",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-2",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 40,
-        "padding-block-end": 40
-      }
     }
   },
   "order": [
@@ -1867,7 +1795,7 @@
     "featured_product_information_YFtUFV",
     "product_list_3nUnDD",
     "section_a3brex",
-    "1773363848a0164657",
-    "section_xRRKEV"
+    "jigerz_newsletter_6ATc4F",
+    "1773363848a0164657"
   ]
 }
