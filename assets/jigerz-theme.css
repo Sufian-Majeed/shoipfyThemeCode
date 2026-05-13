@@ -108,10 +108,27 @@ p, span, a, li, label, input, select, textarea, button,
   border-color: var(--jg-gold-metal) !important;
 }
 
-/* ── 10. Add to cart — gold hover glow ──────────────────── */
+/* ── 10. Add to cart + Buy Now — gold buttons ───────────── */
+.add-to-cart-button,
+.product-form__submit,
+.button.add-to-cart-button,
+button[name="add"],
+.product-form__buttons .button:not(.button-secondary),
+.sticky-add-to-cart__button {
+  background-color: var(--jg-gold) !important;
+  border-color: var(--jg-gold) !important;
+  color: #111111 !important;
+}
 .add-to-cart-button:hover,
-.product-form__submit:hover {
-  box-shadow: 0 4px 20px rgba(200,155,60,0.3) !important;
+.product-form__submit:hover,
+.button.add-to-cart-button:hover,
+button[name="add"]:hover,
+.product-form__buttons .button:not(.button-secondary):hover,
+.sticky-add-to-cart__button:hover {
+  background-color: var(--jg-gold-metal) !important;
+  border-color: var(--jg-gold-metal) !important;
+  color: #111111 !important;
+  box-shadow: 0 4px 20px rgba(200,155,60,0.35) !important;
 }
 
 /* ──────────────────────────────────────────────────────────
