@@ -263,6 +263,19 @@
     color: var(--gold); display: grid; place-items: center; flex-shrink: 0;
   }
 
+  #jz-newsletter-{{ section.id }},
+  #jz-newsletter-{{ section.id }} *,
+  #jz-newsletter-{{ section.id }} input,
+  #jz-newsletter-{{ section.id }} button {
+    font-family: 'Inter', system-ui, sans-serif !important;
+  }
+  #jz-newsletter-{{ section.id }} .jz-nl-headline,
+  #jz-newsletter-{{ section.id }} .jz-accent,
+  #jz-newsletter-{{ section.id }} .jz-gift,
+  #jz-newsletter-{{ section.id }} .jz-ornament {
+    font-family: 'Instrument Serif', Georgia, serif !important;
+  }
+
   @keyframes jzRise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes jzDrift {
     0%, 100% { transform: translate(0, 0) scale(1); }
