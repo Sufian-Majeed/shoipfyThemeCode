@@ -471,3 +471,26 @@ select:focus-visible,
     border-top: 1px solid rgba(17,17,17,0.1);
   }
 }
+
+/* ── Hide sales popup notification widget ───────────────── */
+#fomo-widget,
+#fomo_widget,
+.fomo-notification,
+.fomo_notification,
+[id*="fomo"],
+[class*="fomo"],
+[id*="sales-pop"],
+[class*="sales-pop"],
+[id*="salespop"],
+[class*="salespop"],
+[id*="sales_pop"],
+[class*="sales_pop"],
+[class*="recent-purchase"],
+[class*="recentpurchase"],
+[id*="notification-popup"],
+[class*="notification-popup"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
