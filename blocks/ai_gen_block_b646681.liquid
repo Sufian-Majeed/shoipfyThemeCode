@@ -204,7 +204,15 @@
       </div>
 
       <div class="ai-size-chart-image-wrapper-{{ ai_gen_id }}">
-        {% if block.settings.size_chart_image %}
+        {% assign product_size_chart = product.metafields.custom.size_chart.value %}
+        {% if product_size_chart %}
+          <img
+            src="{{ product_size_chart | image_url: width: 1200 }}"
+            alt="Size Chart"
+            loading="lazy"
+            class="ai-size-chart-image-{{ ai_gen_id }}"
+          >
+        {% elsif block.settings.size_chart_image %}
           <img
             src="{{ block.settings.size_chart_image | image_url: width: 1200 }}"
             alt="{{ block.settings.size_chart_image.alt | escape }}"
